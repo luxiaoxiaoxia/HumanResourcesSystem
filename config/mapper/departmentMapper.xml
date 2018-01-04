@@ -16,4 +16,47 @@
 		)	
 	</insert>
 	
+	<delete id="deleteDepartment" parameterType="int">
+		delete from
+			departments
+		where
+			d_id = #{dId}
+	</delete>
+	
+	<update id="updateDepartment" parameterType="Department">
+		update 
+			departments
+		set
+			d_name=#{dName},
+			d_create_time=#{dCreateTime},
+			d_type=#{dType}
+		where
+			d_id = #{dId}
+	</update>
+	
+	<select id="queryDepartmentByDId" parameterType="int" resultType="Department">
+		select
+			* 
+		from
+			departments 
+		where
+			d_id = #{dId}
+	</select>
+	
+	<select id="queryDepartmentByDName" parameterType="String" resultType="Department">
+		select
+			* 
+		from
+			departments 
+		where
+			d_name = #{dName}
+	</select>
+	
+	<select id="queryAllDepartment" resultType="Department">
+		select
+			* 
+		from
+			departments 
+	</select>
+	
 </mapper>
