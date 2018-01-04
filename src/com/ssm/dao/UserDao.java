@@ -2,6 +2,8 @@ package com.ssm.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.ssm.entity.User;
 
 public interface UserDao {
@@ -47,7 +49,7 @@ public interface UserDao {
 	 * @param uPassword
 	 * @return User 查询出的游客
 	 */
-	public User queryUserByUNameAndUPassword(String uName,String uPassword);
+	public User queryUserByUNameAndUPassword(@Param("uName")String uName,@Param("uPassword")String uPassword);
 	
 	/**
 	 * 查询所有游客

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssm.dao.UserDao">
+	
+	<insert id="insertUser" parameterType="User">
+		insert into
+			users(
+				u_name,
+				u_password,
+				u_type,
+				u_create_time
+			)
+		values(
+			#{uName},
+			#{uPassword},
+			#{uType},
+			#{uCreateTime}
+		)
+	</insert>
+	
+	<delete id="deleteUser" parameterType="int">
+		delete from
+			users
+		where
+			u_id = #{uId}	
+	</delete>
+	
+	<update id="updateUser" parameterType="User">
+		update 
+			users
+		set
+			u_name=#{uName},
+			u_password=#{uPassword},
+			u_type=#{uType},
+			u_create_time=#{uCreateTime}
+		where
+			u_id = #{uId}
+	</update>
+	
+	<select id="queryUserByUId" parameterType="int" resultType="User">
+		select
+			* 
+		from
+			users 
+		where
+			u_id = #{uId}
+	</select>
+	
+	<select id="queryUserByUName" parameterType="String" resultType="User">
+		select
+			* 
+		from
+			users 
+		where
+			u_name = #{uName}
+	</select>
+	
+	<select id="queryUserByUNameAndUPassword" parameterType="String" resultType="User">
+		select
+			* 
+		from
+			users 
+		where
+			u_name = #{uName}
+		and
+			u_password = #{uPassword}
+	</select>
+	
+	<select id="queryAllUser" resultType="User">
+		select
+			*
+		from
+			users
+	</select>
+	
+</mapper>

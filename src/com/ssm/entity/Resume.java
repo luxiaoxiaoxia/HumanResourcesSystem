@@ -5,7 +5,7 @@ import java.util.Date;
 public class Resume {
 	
 	private Integer rId;//简历id
-	private Integer uId;//游客id
+	private User rUser;//游客
 	private String uRealName;//真实姓名
 	private String uSex;//游客sex
 	private int uAge;//游客岁数
@@ -20,17 +20,18 @@ public class Resume {
 	private String uPoliticalStatus;//政治面貌
 	private String uHobby;//兴趣爱好
 	private Date uResumeDate;//简历时间
+	private int rType;//0.未查看;1.已查看;
 	
 	public Resume() {
 		super();
 	}
 
-	public Resume(Integer rId, Integer uId, String uRealName, String uSex, int uAge, String uEducation,
+	public Resume(Integer rId, User rUser, String uRealName, String uSex, int uAge, String uEducation,
 			long uPhotoNumber, String uEmail, Department uDepartment, Position uPosition, int uWorkTime, double uSalary,
-			String uBeforeJob, String uPoliticalStatus, String uHobby, Date uResumeDate) {
+			String uBeforeJob, String uPoliticalStatus, String uHobby, Date uResumeDate, int rType) {
 		super();
 		this.rId = rId;
-		this.uId = uId;
+		this.rUser = rUser;
 		this.uRealName = uRealName;
 		this.uSex = uSex;
 		this.uAge = uAge;
@@ -45,6 +46,7 @@ public class Resume {
 		this.uPoliticalStatus = uPoliticalStatus;
 		this.uHobby = uHobby;
 		this.uResumeDate = uResumeDate;
+		this.rType = rType;
 	}
 
 	public Integer getrId() {
@@ -55,12 +57,12 @@ public class Resume {
 		this.rId = rId;
 	}
 
-	public Integer getuId() {
-		return uId;
+	public User getrUser() {
+		return rUser;
 	}
 
-	public void setuId(Integer uId) {
-		this.uId = uId;
+	public void setrUser(User rUser) {
+		this.rUser = rUser;
 	}
 
 	public String getuRealName() {
@@ -175,14 +177,23 @@ public class Resume {
 		this.uResumeDate = uResumeDate;
 	}
 
+	public int getrType() {
+		return rType;
+	}
+
+	public void setrType(int rType) {
+		this.rType = rType;
+	}
+
 	@Override
 	public String toString() {
-		return "Resume [rId=" + rId + ", uId=" + uId + ", uRealName=" + uRealName + ", uSex=" + uSex + ", uAge=" + uAge
-				+ ", uEducation=" + uEducation + ", uPhotoNumber=" + uPhotoNumber + ", uEmail=" + uEmail
+		return "Resume [rId=" + rId + ", rUser=" + rUser + ", uRealName=" + uRealName + ", uSex=" + uSex + ", uAge="
+				+ uAge + ", uEducation=" + uEducation + ", uPhotoNumber=" + uPhotoNumber + ", uEmail=" + uEmail
 				+ ", uDepartment=" + uDepartment + ", uPosition=" + uPosition + ", uWorkTime=" + uWorkTime
 				+ ", uSalary=" + uSalary + ", uBeforeJob=" + uBeforeJob + ", uPoliticalStatus=" + uPoliticalStatus
-				+ ", uHobby=" + uHobby + ", uResumeDate=" + uResumeDate + "]";
+				+ ", uHobby=" + uHobby + ", uResumeDate=" + uResumeDate + ", rType=" + rType + "]";
 	}
+
 	
 	
 

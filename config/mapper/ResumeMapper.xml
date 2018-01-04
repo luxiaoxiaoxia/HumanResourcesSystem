@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssm.dao.ResumeDao">
+	
+	<insert id="insertResume" parameterType="Resume">
+		insert into
+			resumes(
+				u_id,
+				u_real_name,
+				u_sex,
+				u_age,
+				u_education,
+				u_photo_number,
+				u_email,
+				u_d_id,
+				u_p_id,
+				u_work_time,
+				u_salary,
+				u_before_job,
+				u_political_status,
+				u_hobby,
+				u_resume_date,
+				r_type
+			)
+		values(
+			#{rUser.uId},
+			#{uRealName},
+			#{uSex},
+			#{uAge},
+			#{uEducation},
+			#{uPhotoNumber},
+			#{uEmail},
+			#{uDepartment.dId},
+			#{uPosition.pId},
+			#{uWorkTime},
+			#{uSalary},
+			#{uBeforeJob},
+			#{uPoliticalStatus},
+			#{uHobby},
+			#{uResumeDate},
+			#{rType}
+		)	
+	</insert>
+	
+	<delete id="deleteResume" parameterType="int">
+		delete from
+			resumes
+		where
+			r_id = #{rId}	
+	</delete>
+	
+	<update id="updateResume" parameterType="Resume">
+		update 
+			resumes
+		set
+			u_id=#{rUser.uId},
+			u_real_name=#{uRealName},
+			u_sex=#{uSex},
+			u_age=#{uAge},
+			u_education=#{uEducation},
+			u_photo_number=#{uPhotoNumber},
+			u_email=#{uEmail},
+			u_d_id=#{uDepartment.dId},
+			u_p_id=#{uPosition.pId},
+			u_work_time=#{uWorkTime},
+			u_salary=#{uSalary},
+			u_before_job=#{uBeforeJob},
+			u_political_status=#{uPoliticalStatus},
+			u_hobby=#{uHobby},
+			u_resume_date=#{uResumeDate},
+			r_type=#{rType}
+		where
+			r_id = #{rId}
+	</update>
+	
+	<select id="queryResumeByRId" parameterType="int" resultMap="ResumeResultMap">
+		select
+			*
+		from
+			resumes
+		where
+			r_id = #{rId}
+	</select>
+	
+	<resultMap type="Resume" id="ResumeResultMap">
+		<id property="rId" column="r_id"/>
+		<result property="uRealName" column="u_real_name"/>
+		<result property="uSex" column="u_sex"/>
+		<result property="uAge" column="u_age"/>
+		<result property="uEducation" column="u_education"/>
+		<result property="uPhotoNumber" column="u_photo_number"/>
+		<result property="uEmail" column="u_email"/>
+		<result property="uWorkTime" column="u_work_time"/>
+		<result property="uSalary" column="u_salary"/>
+		<result property="uBeforeJob" column="u_before_job"/>
+		<result property="uPoliticalStatus" column="u_political_status"/>
+		<result property="uHobby" column="u_hobby"/>
+		<result property="uResumeDate" column="u_resume_date"/>
+		<result property="rType" column="r_type"/>
+		<association property="rUser" column="u_id" select="queryUserByUId"></association>
+		<association property="uDepartment" column="u_d_id" select="queryDepartmentByDId"></association>
+		<association property="uPosition" column="u_p_id" select="queryPositionByPId"></association>
+	</resultMap>
+	
+	<select id="queryUserByUId" parameterType="int" resultType="User">
+		select
+			* 
+		from
+			users 
+		where
+			u_id = #{uId}
+	</select>
+	
+	<select id="queryDepartmentByDId" parameterType="int" resultType="Department">
+		SELECT 
+			* 
+		FROM 
+			departments 
+		WHERE 
+			d_id=#{dId}
+	</select>
+	
+	<select id="queryPositionByPId" parameterType="int" resultMap="PositionResultMap" >
+		select
+			* 
+		from
+			positions 
+		where
+			p_id = #{pId}
+	</select>
+	
+	<resultMap type="Position" id="PositionResultMap">
+		<id property="pId" column="p_id"/>
+		<result property="pName" column="p_name"/>
+		<result property="pType" column="p_type"/>
+		<association property="pDepartment" column="p_d_id" select="queryDepartmentByDId"></association>
+	</resultMap>
+	
+	<select id="queryResumeByUId" parameterType="int" resultMap="ResumeResultMap">
+		select
+			*
+		from
+			resumes
+		where
+			u_id = #{uId}
+	</select>
+	
+	<select id="queryAllResume" resultMap="ResumeResultMap">
+		select
+			*
+		from
+			resumes
+	</select>
+	
+</mapper>
