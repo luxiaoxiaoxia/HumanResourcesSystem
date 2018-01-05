@@ -26,8 +26,8 @@ public class DateUtil {
 	
 	public static int dateMinusDate(Date date1,Date date2) {
 		long date = date1.getTime()-date2.getTime();
-		int hour = (int)date/1000/60;
-		return hour;
+		int minute = (int)date/1000/60;
+		return minute;
 	}
 
 }

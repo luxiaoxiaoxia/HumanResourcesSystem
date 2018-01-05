@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssm.dao.EmployeeDao">
+	
+	<insert id="insertEmployee" parameterType="int">
+		insert into
+			employees(
+				e_name,
+				e_real_name,
+				e_password,
+				e_sex,
+				e_age,
+				e_education,
+				e_photo_number,
+				e_email,
+				e_entry_date,
+				e_type,
+				e_d_id,
+				e_p_id,
+				e_political_status,
+				e_hobby,
+				e_remark
+			)
+		values(
+			#{eName},
+			#{eRealName},
+			#{ePassword},
+			#{eSex},
+			#{eAge},
+			#{eEducation},
+			#{ePhotoNumber},
+			#{eEmail},
+			#{eEntryDate},
+			#{eType},
+			#{eDepartment.dId},
+			#{ePosition.pId},
+			#{ePoliticalStatus},
+			#{eHobby},
+			#{eRemark}
+		)	
+	</insert>
+	
+	<delete id="deleteEmployee" parameterType="int">
+		delete from
+			employees
+		where
+			e_id = #{eId}	
+	</delete>
+	
+	<update id="updateEmployee" parameterType="Employee">
+		update
+			employees
+		set
+			e_name=#{eName},
+			e_real_name=#{eRealName},
+			e_password=#{ePassword},
+			e_sex=#{eSex},
+			e_age=#{eAge},
+			e_education=#{eEducation},
+			e_photo_number=#{ePhotoNumber},
+			e_email=#{eEmail},
+			e_entry_date=#{eEntryDate},
+			e_type=#{eType},
+			e_d_id=#{eDepartment.dId},
+			e_p_id=#{ePosition.pId},
+			e_political_status=#{ePoliticalStatus},
+			e_hobby=#{eHobby},
+			e_remark=#{eRemark}	
+		where
+			e_id = #{eId}
+	</update>
+	
+</mapper>

@@ -2,6 +2,166 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ssm.dao.ApplicationMessageDao">
 	
+	<insert id="insertApplicationMessage" parameterType="ApplicationMessage">
+		insert into
+			applicationmessages(
+				am_u_id,
+				am_rm_id,
+				am_r_id,
+				am_create_time,
+				am_type
+			)
+		values(
+			#{amUser.uId},
+			#{amRm.rmId},
+			#{amResume.rId},
+			#{amCreateTime},
+			#{amType}
+		)
+	</insert>
 	
+	<delete id="deleteApplicationMessage" parameterType="int">
+		delete from
+			applicationmessages
+		where
+			am_id = #{amId}
+	</delete>
+	
+	<update id="updateApplicationMessage" parameterType="ApplicationMessage">
+		update
+			applicationmessages
+		set
+			am_u_id=#{amUser.uId},
+			am_rm_id=#{amRm.rmId},
+			am_r_id=#{amResume.rId},
+			am_create_time=#{amCreateTime},
+			am_type=#{amType}
+		where
+			am_id = #{amId}
+	</update>
+	
+	<select id="queryApplicationMessageByAmId" parameterType="int" resultMap="ApplicationMessageResultMap">
+		select
+			*
+		from
+			applicationmessages
+		where
+			am_id = #{amId}
+	</select>
+	
+	<resultMap type="ApplicationMessage" id="ApplicationMessageResultMap">
+		<id property="amId" column="am_id"/>
+		<result property="amCreateTime" column="am_create_time"/>
+		<result property="amType" column="am_type"/>
+		<association property="amUser" column="am_u_id" select="queryUserByUId"></association>
+		<association property="amRm" column="am_rm_id" select="queryRecruitmentMessageByRmId"></association>
+		<association property="amResume" column="am_r_id" select="queryResumeByRId"></association>
+	</resultMap>
+	
+	<select id="queryUserByUId" parameterType="int" resultType="User">
+		select
+			* 
+		from
+			users 
+		where
+			u_id = #{uId}
+	</select>
+	
+	<select id="queryRecruitmentMessageByRmId" parameterType="int" resultMap="RecruitmentMessageResultMap">
+		select
+			*
+		from
+			recruitmentmessages
+		where
+			rm_id = #{rmId}
+	</select>
+	
+	<resultMap type="RecruitmentMessage" id="RecruitmentMessageResultMap">
+		<id property="rmId" column="rm_id"/>
+		<result property="rmMessage" column="rm_message"/>
+		<result property="rmCreateDate" column="rm_create_date"/>
+		<result property="rmType" column="rm_type"/>
+		<association property="rmDepartment" column="rm_d_id" select="queryDepartmentByDId"></association>
+		<association property="rmPosition" column="rm_p_id" select="queryPositionByPId"></association>
+	</resultMap>
+	
+	<select id="queryDepartmentByDId" parameterType="int" resultType="Department">
+		SELECT 
+			* 
+		FROM 
+			departments 
+		WHERE 
+			d_id=#{dId}
+	</select>
+	
+	<select id="queryPositionByPId" parameterType="int" resultMap="PositionResultMap" >
+		select
+			* 
+		from
+			positions 
+		where
+			p_id = #{pId}
+	</select>
+	
+	<resultMap type="Position" id="PositionResultMap">
+		<id property="pId" column="p_id"/>
+		<result property="pName" column="p_name"/>
+		<result property="pType" column="p_type"/>
+		<association property="pDepartment" column="p_d_id" select="queryDepartmentByDId"></association>
+	</resultMap>
+	
+	<select id="queryResumeByRId" parameterType="int" resultMap="ResumeResultMap">
+		select
+			*
+		from
+			resumes
+		where
+			r_id = #{rId}
+	</select>
+	
+	<resultMap type="Resume" id="ResumeResultMap">
+		<id property="rId" column="r_id"/>
+		<result property="uRealName" column="u_real_name"/>
+		<result property="uSex" column="u_sex"/>
+		<result property="uAge" column="u_age"/>
+		<result property="uEducation" column="u_education"/>
+		<result property="uPhotoNumber" column="u_photo_number"/>
+		<result property="uEmail" column="u_email"/>
+		<result property="uWorkTime" column="u_work_time"/>
+		<result property="uSalary" column="u_salary"/>
+		<result property="uBeforeJob" column="u_before_job"/>
+		<result property="uPoliticalStatus" column="u_political_status"/>
+		<result property="uHobby" column="u_hobby"/>
+		<result property="uResumeDate" column="u_resume_date"/>
+		<result property="rType" column="r_type"/>
+		<association property="rUser" column="u_id" select="queryUserByUId"></association>
+		<association property="uDepartment" column="u_d_id" select="queryDepartmentByDId"></association>
+		<association property="uPosition" column="u_p_id" select="queryPositionByPId"></association>
+	</resultMap>
+	
+	<select id="queryApplicationMessageByAmRmId" parameterType="int" resultMap="ApplicationMessageResultMap">
+		select
+			*
+		from
+			applicationmessages
+		where
+			am_rm_id = #{amRmId}
+	</select>
+	
+	<select id="queryAllApplicationMessage" resultMap="ApplicationMessageResultMap">
+		select
+			*
+		from
+			applicationmessages
+	</select>
+	
+	<select id="queryApplicationMessageByAmUId" parameterType="int" resultMap="ApplicationMessageResultMap">
+		select
+			*
+		from
+			applicationmessages
+		where
+			am_u_id = #{amUId}
+	</select>
 	
 </mapper>
