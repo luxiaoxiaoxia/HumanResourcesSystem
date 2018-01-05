@@ -2,6 +2,110 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ssm.dao.RecruitmentMessageDao">
 	
+	<insert id="insertRecruitmentMessage" parameterType="RecruitmentMessage">
+		insert into
+			recruitmentmessages(
+				rm_d_id,
+				rm_p_id,
+				rm_message,
+				rm_create_date,
+				rm_type
+			)
+		values(
+			#{rmDepartment.dId},
+			#{rmPosition.pId},
+			#{rmMessage},
+			#{rmCreateDate},
+			#{rmType}
+		)	
+	</insert>
 	
+	<delete id="deleteRecruitmentMessage" parameterType="int">
+		delete from
+			recruitmentmessages
+		where
+			rm_id = #{rmId}	
+	</delete>
+	
+	<update id="updateRecruitmentMessage" parameterType="RecruitmentMessage">
+		update 
+			recruitmentmessages
+		set
+			rm_d_id=#{rmDepartment.dId},
+			rm_p_id=#{rmPosition.pId},
+			rm_message=#{rmMessage},
+			rm_create_date=#{rmCreateDate},
+			rm_type=#{rmType}
+		where
+			rm_id = #{rmId}		
+	</update>
+	
+	<select id="queryRecruitmentMessageByRmId" parameterType="int" resultMap="RecruitmentMessageResultMap">
+		select
+			*
+		from
+			recruitmentmessages
+		where
+			rm_id = #{rmId}
+	</select>
+	
+	<resultMap type="RecruitmentMessage" id="RecruitmentMessageResultMap">
+		<id property="rmId" column="rm_id"/>
+		<result property="rmMessage" column="rm_message"/>
+		<result property="rmCreateDate" column="rm_create_date"/>
+		<result property="rmType" column="rm_type"/>
+		<association property="rmDepartment" column="rm_d_id" select="queryDepartmentByDId"></association>
+		<association property="rmPosition" column="rm_p_id" select="queryPositionByPId"></association>
+	</resultMap>
+	
+	<select id="queryDepartmentByDId" parameterType="int" resultType="Department">
+		SELECT 
+			* 
+		FROM 
+			departments 
+		WHERE 
+			d_id=#{dId}
+	</select>
+	
+	<select id="queryPositionByPId" parameterType="int" resultMap="PositionResultMap" >
+		select
+			* 
+		from
+			positions 
+		where
+			p_id = #{pId}
+	</select>
+	
+	<resultMap type="Position" id="PositionResultMap">
+		<id property="pId" column="p_id"/>
+		<result property="pName" column="p_name"/>
+		<result property="pType" column="p_type"/>
+		<association property="pDepartment" column="p_d_id" select="queryDepartmentByDId"></association>
+	</resultMap>
+	
+	<select id="queryRecruitmentMessageByRmDId" parameterType="int" resultMap="RecruitmentMessageResultMap">
+		select
+			*
+		from
+			recruitmentmessages
+		where
+			rm_d_id = #{rmDId}
+	</select>
+	
+	<select id="queryRecruitmentMessageByRmPId" parameterType="int" resultMap="RecruitmentMessageResultMap">
+		select
+			*
+		from
+			recruitmentmessages
+		where
+			rm_p_id = #{rmPId}
+	</select>
+	
+	<select id="queryAllRecruitmentMessage" resultMap="RecruitmentMessageResultMap">
+		select
+			*
+		from
+			recruitmentmessages
+	</select>
 	
 </mapper>

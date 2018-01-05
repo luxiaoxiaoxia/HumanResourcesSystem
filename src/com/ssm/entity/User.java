@@ -7,7 +7,7 @@ public class User {
 	private Integer uId;//员工id
 	private String uName;//员工name
 	private String uPassword;//员工密码
-	private int uType;//0.游客;
+	private int uType;//0.游客;1.录用;
 	private Date uCreateTime;//游客创建时间
 	
 	public User() {
