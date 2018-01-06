@@ -2,6 +2,123 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ssm.dao.SalaryDao">
 	
+	<insert id="insertSalary" parameterType="Salary">
+		insert into
+			salaries(
+				e_id,
+				s_year,
+				s_month,
+				sum_salary,
+				base_salary,
+				performance_salary,
+				call_back_salary,
+				extra_salary,
+				insurance
+				)
+		values(
+			#{eId},
+			#{sYear},
+			#{sMonth},
+			#{sumSalary},
+			#{baseSalary},
+			#{performanceSalary},
+			#{callBackSalary},
+			#{extraSalary},
+			#{insurance}
+		)
+	</insert>
 	
+	<delete id="deleteSalary" parameterType="int">
+		delete from
+			salaries
+		where
+			s_id = #{sId}	
+	</delete>
+	
+	<update id="updateSalary" parameterType="Salary">
+		update
+			salaries
+		set
+			e_id=#{eId},
+			s_year=#{sYear},
+			s_month=#{sMonth},
+			sum_salary=#{sumSalary},
+			base_salary=#{baseSalary},
+			performance_salary=#{performanceSalary},
+			call_back_salary=#{callBackSalary},
+			extra_salary=#{extraSalary},
+			insurance=#{insurance}
+		where
+			s_id = #{sId}		
+	</update>
+	
+	<select id="querySalaryBySId" parameterType="int" resultType="Salary">
+		select
+			*
+		from
+			salaries
+		where
+			s_id = #{sId}	
+	</select>
+	
+	<select id="querySalaryByEId" parameterType="int" resultType="Salary">
+		select
+			*
+		from
+			salaries
+		where
+			e_id = #{eId}	
+	</select>
+	
+	<select id="querySalaryByEIdAndSYear" parameterType="int" resultType="Salary">
+		select
+			*
+		from
+			salaries
+		where
+			e_id = #{eId}
+		and
+			s_year = #{sYear}		
+	</select>
+	
+	<select id="querySalaryByEIdAndSYearAndSMonth" parameterType="int" resultType="Salary">
+		select
+			*
+		from
+			salaries
+		where
+			e_id = #{eId}
+		and
+			s_year = #{sYear}
+		and
+			s_month = #{sMonth}		
+	</select>
+	
+	<select id="querySalaryBySYear" parameterType="int" resultType="Salary">
+		select
+			*
+		from
+			salaries
+		where
+			s_year = #{sYear}	
+	</select>
+	
+	<select id="querySalaryBySYearAndSMonth" parameterType="int" resultType="Salary">
+		select
+			*
+		from
+			salaries
+		where
+			s_month = #{sMonth}
+		and
+			s_year = #{sYear}		
+	</select>
+	
+	<select id="queryAllSalary" resultType="Salary">
+		select
+			*
+		from
+			salaries
+	</select>
 	
 </mapper>
