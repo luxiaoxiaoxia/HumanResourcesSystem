@@ -8,13 +8,15 @@
 				p_name,
 				p_create_time,
 				p_type,
-				p_d_id
+				p_d_id,
+				p_base_salary
 			)
 		values(
 			#{pName},
 			#{pCreateTime},
 			#{pType},
-			#{pDepartment.dId}
+			#{pDepartment.dId},
+			#{pBaseSalary}
 		)	
 	</insert>
 	
@@ -32,7 +34,8 @@
 			p_name=#{pName},
 			p_create_time=#{pCreateTime},
 			p_type=#{pType},
-			p_d_id=#{pDepartment.dId}
+			p_d_id=#{pDepartment.dId},
+			p_base_salary=#{pBaseSalary}
 		where
 			p_id = #{pId}
 	</update>
@@ -49,7 +52,9 @@
 	<resultMap type="Position" id="PositionResultMap">
 		<id property="pId" column="p_id"/>
 		<result property="pName" column="p_name"/>
+		<result property="pCreateTime" column="p_create_time"/>
 		<result property="pType" column="p_type"/>
+		<result property="pBaseSalary" column="p_base_salary"/>
 		<association property="pDepartment" column="p_d_id" select="queryDepartmentByDId"></association>
 	</resultMap>
 	 

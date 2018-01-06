@@ -23,7 +23,7 @@ public class TestRecruitmentMessageDao {
 	
 	@Test
 	public void insertRecruitmentMessage() {
-		RecruitmentMessage rm = new RecruitmentMessage(-1, new Department(3, null, null, 1), new Position(3, null, null, 0, null), "Ì°ÍæÀ¶ÔÂ3", new Date(), 0);
+		RecruitmentMessage rm = new RecruitmentMessage(-1, new Department(3, null, null, 1), new Position(3, null, null, 0, null,0), "Ì°ÍæÀ¶ÔÂ3", new Date(), 0);
 		int res = recruitmentMessageDao.insertRecruitmentMessage(rm);
 		System.out.println(res);
 	}
@@ -36,7 +36,7 @@ public class TestRecruitmentMessageDao {
 	
 	@Test
 	public void updateRecruitmentMessage() {
-		RecruitmentMessage rm = new RecruitmentMessage(3, new Department(3, null, null, 1), new Position(3, null, null, 0, null), "Ì°ÍæÀ¶ÔÂ4", new Date(), 1);
+		RecruitmentMessage rm = new RecruitmentMessage(3, new Department(3, null, null, 1), new Position(3, null, null, 0, null,0), "Ì°ÍæÀ¶ÔÂ4", new Date(), 1);
 		int res = recruitmentMessageDao.updateRecruitmentMessage(rm);
 		System.out.println(res);
 	}

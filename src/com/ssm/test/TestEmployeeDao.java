@@ -26,7 +26,7 @@ public class TestEmployeeDao {
 	
 	@Test
 	public void insertEmployee() {
-		Employee e = new Employee(-1, "xiaoxia", "xiao", MD5Util.md5("111"), "男", 18, "大学", 13817717717L, "234@qq.com", new Date(), 1, new Department(1, "", new Date(), 0), new Position(1, "咸鱼组员", new Date(), 1, new Department(1, null, null, 1)), "共党", "共党", "共党");
+		Employee e = new Employee(-1, "xiaoxia", "xiao", MD5Util.md5("111"), "男", 18, "大学", 13817717717L, "234@qq.com", new Date(), 1, new Department(1, "", new Date(), 0), new Position(1, "咸鱼组员", new Date(), 1, new Department(1, null, null, 1),0), "共党", "共党", "共党");
 		employeeDao.insertEmployee(e);
 	}
 	
@@ -38,9 +38,47 @@ public class TestEmployeeDao {
 	
 	@Test
 	public void updateEmployee() {
-		Employee e = new Employee(1, "xiaoxia111", "xiao", MD5Util.md5("222"), "男", 18, "大学", 13817717717L, "234@qq.com", new Date(), 1, new Department(1, "", new Date(), 0), new Position(1, "咸鱼组员", new Date(), 1, new Department(1, null, null, 1)), "共党", "共党", "共党");
+		Employee e = new Employee(1, "xiaoxia111", "xiao", MD5Util.md5("222"), "男", 18, "大学", 13817717717L, "234@qq.com", new Date(), 1, new Department(1, "", new Date(), 0), new Position(1, "咸鱼组员", new Date(), 1, new Department(1, null, null, 1),0), "共党", "共党", "共党");
 		int res = employeeDao.updateEmployee(e);
 		System.out.println(res);
+	}
+	
+	@Test
+	public void queryEmployeeByEId() {
+		Employee e = employeeDao.queryEmployeeByEId(1);
+		System.out.println(e);
+	}
+	
+	@Test
+	public void queryEmployeeByEName() {
+		Employee e = employeeDao.queryEmployeeByEName("xiaolu");
+		System.out.println(e);
+	}
+	
+	@Test
+	public void queryEmployeeByENameAndEPassword() {
+		Employee e = employeeDao.queryEmployeeByENameAndEPassword("xiaol","698D51A19D8A121CE581499D7B701668");
+		System.out.println(e);
+	}
+	
+	@Test
+	public void queryEmployeeByEDId() {
+		List<Employee> eList = employeeDao.queryEmployeeByEDId(3);
+		System.out.println(eList);
+	}
+	
+	@Test
+	public void queryEmployeeByEPId() {
+		List<Employee> eList = employeeDao.queryEmployeeByEPId(2);
+		System.out.println(eList);
+		System.out.println(eList.size());
+	}
+	
+	@Test
+	public void queryAllEmployee() {
+		List<Employee> eList = employeeDao.queryAllEmployee();
+		System.out.println(eList);
+		System.out.println(eList.size());
 	}
 	
 }

@@ -24,7 +24,7 @@ public class TestResumeDao {
 	
 	@Test
 	public void insertUser() {
-		Resume e = new Resume(-1, new User(1, null, null, 1, null), "张五", "男", 25, "小学", 13817713546L, "233@QQ.COM", new Department(1, null, null, 0), new Position(3, null, null, 2, null), 2, 700, "工程师", "国民党", "shuijiao", new Date(), 1);
+		Resume e = new Resume(-1, new User(1, null, null, 1, null), "张五", "男", 25, "小学", 13817713546L, "233@QQ.COM", new Department(1, null, null, 0), new Position(3, null, null, 2, null,0), 2, 700, "工程师", "国民党", "shuijiao", new Date(), 1);
 		int res = resumeDao.insertResume(e);
 		System.out.println(res);
 	}
@@ -37,7 +37,7 @@ public class TestResumeDao {
 	
 	@Test
 	public void updateResume() {
-		Resume e = new Resume(3, new User(1, null, null, 1, null), "李四", "女", 21, "初中", 1381771323L, "111@QQ.COM", new Department(1, null, null, 0), new Position(3, null, null, 2, null), 1, 900, "工程师", "国民党111", "shuijiao", new Date(), 1);
+		Resume e = new Resume(3, new User(1, null, null, 1, null), "李四", "女", 21, "初中", 1381771323L, "111@QQ.COM", new Department(1, null, null, 0), new Position(3, null, null, 2, null,0), 1, 900, "工程师", "国民党111", "shuijiao", new Date(), 1);
 		int res = resumeDao.updateResume(e);
 		System.out.println(res);
 	}

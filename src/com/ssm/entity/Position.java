@@ -9,18 +9,21 @@ public class Position {
 	private Date pCreateTime;
 	private int pType;
 	private Department pDepartment;
+	private double pBaseSalary;
 	
 	public Position() {
 		super();
 	}
 
-	public Position(Integer pId, String pName, Date pCreateTime, int pType, Department pDepartment) {
+	public Position(Integer pId, String pName, Date pCreateTime, int pType, Department pDepartment,
+			double pBaseSalary) {
 		super();
 		this.pId = pId;
 		this.pName = pName;
 		this.pCreateTime = pCreateTime;
 		this.pType = pType;
 		this.pDepartment = pDepartment;
+		this.pBaseSalary = pBaseSalary;
 	}
 
 	public Integer getpId() {
@@ -63,10 +66,18 @@ public class Position {
 		this.pDepartment = pDepartment;
 	}
 
+	public double getpBaseSalary() {
+		return pBaseSalary;
+	}
+
+	public void setpBaseSalary(double pBaseSalary) {
+		this.pBaseSalary = pBaseSalary;
+	}
+
 	@Override
 	public String toString() {
 		return "Position [pId=" + pId + ", pName=" + pName + ", pCreateTime=" + pCreateTime + ", pType=" + pType
-				+ ", pDepartment=" + pDepartment + "]";
+				+ ", pDepartment=" + pDepartment + ", pBaseSalary=" + pBaseSalary + "]";
 	}
 	
 	

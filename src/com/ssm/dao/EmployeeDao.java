@@ -2,6 +2,8 @@ package com.ssm.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.ssm.entity.Employee;
 
 public interface EmployeeDao {
@@ -47,7 +49,7 @@ public interface EmployeeDao {
 	 * @param ePassword 员工password
 	 * @return Employee 查询出来的员工
 	 */
-	public Employee queryEmployeeByENameAndEPassword(String eName, String ePassword);
+	public Employee queryEmployeeByENameAndEPassword(@Param("eName")String eName, @Param("ePassword")String ePassword);
 	
 	/**
 	 * 通过部门id查询所有员工

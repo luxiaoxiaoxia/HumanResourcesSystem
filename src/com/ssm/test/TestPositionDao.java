@@ -22,7 +22,7 @@ public class TestPositionDao {
 	
 	@Test
 	public void insertPosition() {
-		Position p = new Position(-1, "咸鱼组员", new Date(), 1, new Department(1, null, null, 1));
+		Position p = new Position(-1, "咸鱼组员", new Date(), 1, new Department(1, null, null, 1),0);
 		int res = positionDao.insertPosition(p);
 		System.out.println(res);
 	}
@@ -41,7 +41,7 @@ public class TestPositionDao {
 	
 	@Test
 	public void updatePosition() {
-		Position p = new Position(1, "咸鱼主管a", new Date(), 0, new Department(1, null, null, 1));
+		Position p = new Position(1, "咸鱼主管a", new Date(), 0, new Department(1, null, null, 1),0);
 		int res = positionDao.updatePosition(p);
 		System.out.println(res);
 	}
@@ -62,7 +62,7 @@ public class TestPositionDao {
 	
 	@Test
 	public void queryPositionByPName() {
-		Position p = positionDao.queryPositionByPName("咸鱼");
+		Position p = positionDao.queryPositionByPName("咸鱼主管a");
 		System.out.println(p);
 	}
 

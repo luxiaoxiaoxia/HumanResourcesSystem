@@ -5,7 +5,7 @@ public class Salary {
 	private Integer sId;//工资单id
 	private Integer eId;//员工id
 	private Integer sYear;
-	private Integer sDay;
+	private Integer sMonth;
 	private double sumSalary;//该月总工资
 	private double baseSalary;//基本工资
 	private double performanceSalary;//绩效工资
@@ -17,13 +17,13 @@ public class Salary {
 		super();
 	}
 
-	public Salary(Integer sId, Integer eId, Integer sYear, Integer sDay, double sumSalary, double baseSalary,
+	public Salary(Integer sId, Integer eId, Integer sYear, Integer sMonth, double sumSalary, double baseSalary,
 			double performanceSalary, double callBackSalary, double extraSalary, double insurance) {
 		super();
 		this.sId = sId;
 		this.eId = eId;
 		this.sYear = sYear;
-		this.sDay = sDay;
+		this.sMonth = sMonth;
 		this.sumSalary = sumSalary;
 		this.baseSalary = baseSalary;
 		this.performanceSalary = performanceSalary;
@@ -56,12 +56,12 @@ public class Salary {
 		this.sYear = sYear;
 	}
 
-	public Integer getsDay() {
-		return sDay;
+	public Integer getsMonth() {
+		return sMonth;
 	}
 
-	public void setsDay(Integer sDay) {
-		this.sDay = sDay;
+	public void setsMonth(Integer sMonth) {
+		this.sMonth = sMonth;
 	}
 
 	public double getSumSalary() {
@@ -114,12 +114,11 @@ public class Salary {
 
 	@Override
 	public String toString() {
-		return "Salary [sId=" + sId + ", eId=" + eId + ", sYear=" + sYear + ", sDay=" + sDay + ", sumSalary="
+		return "Salary [sId=" + sId + ", eId=" + eId + ", sYear=" + sYear + ", sMonth=" + sMonth + ", sumSalary="
 				+ sumSalary + ", baseSalary=" + baseSalary + ", performanceSalary=" + performanceSalary
 				+ ", callBackSalary=" + callBackSalary + ", extraSalary=" + extraSalary + ", insurance=" + insurance
 				+ "]";
 	}
-	
 	
 
 }
