@@ -14,8 +14,8 @@
 			)
 		values(
 			#{irUser.uId},
-			#{irDEmployee.eId},
-			#{irEmployee.eId},
+			#{irDEId},
+			#{irEId},
 			#{interviewTime},
 			#{irAm.amId},
 			#{irType}
@@ -34,8 +34,8 @@
 			interviewrecords
 		set
 			ir_u_id=#{irUser.uId},
-			ir_d_e_id=#{irDEmployee.eId},
-			ir_e_id=#{irEmployee.eId},
+			ir_d_e_id=#{irDEId},
+			ir_e_id=#{irEId},
 			interview_time=#{interviewTime},
 			ir_am_id=#{irAm.amId},
 			ir_type=#{irType}
@@ -56,9 +56,9 @@
 		<id property="irId" column="ir_id"/>
 		<result property="interviewTime" column="interview_time"/>
 		<result property="irType" column="ir_type"/>
+		<result property="irDEId" column="ir_d_e_id"/>
+		<result property="irEId" column="ir_e_id"/>
 		<association property="irUser" column="ir_u_id" select="queryUserByUId"></association>
-		<association property="irDEmployee" column="ir_d_e_id" select="queryEmployeeByEId"></association>
-		<association property="irEmployee" column="ir_e_id" select="queryEmployeeByEId"></association>
 		<association property="irAm" column="ir_am_id" select="queryApplicationMessageByAmId"></association>
 	</resultMap>
 	
@@ -70,34 +70,6 @@
 		where
 			u_id = #{uId}
 	</select>
-	
-	<select id="queryEmployeeByEId" parameterType="int" resultMap="EmployeeResultMap">
-		select
-			*
-		from
-			employees
-		where
-			e_id = #{eId}
-	</select>
-	
-	<resultMap type="Employee" id="EmployeeResultMap">
-		<id property="eId" column="e_id"/>
-		<result property="eName" column="e_name"/>
-		<result property="eRealName" column="e_real_name"/>
-		<result property="ePassword" column="e_password"/>
-		<result property="eSex" column="e_sex"/>
-		<result property="eAge" column="e_age"/>
-		<result property="eEducation" column="e_education"/>
-		<result property="ePhotoNumber" column="e_photo_number"/>
-		<result property="eEmail" column="e_email"/>
-		<result property="eEntryDate" column="e_entry_date"/>
-		<result property="eType" column="e_type"/>
-		<result property="ePoliticalStatus" column="e_political_status"/>
-		<result property="eHobby" column="e_hobby"/>
-		<result property="eRemark" column="e_remark"/>
-		<association property="eDepartment" column="e_d_id" select="queryDepartmentByDId"></association>
-		<association property="ePosition" column="e_p_id" select="queryPositionByPId"></association>
-	</resultMap>
 	
 	<select id="queryDepartmentByDId" parameterType="int" resultType="Department">
 		select

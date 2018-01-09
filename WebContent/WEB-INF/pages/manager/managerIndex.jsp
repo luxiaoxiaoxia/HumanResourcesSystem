@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf8">
-<title>index</title>
+<title>managerIndex</title>
 <style>
 	/*
 		界面背景设置
@@ -126,41 +126,32 @@
 	<!--导向-->
 	<div class = "leftBiv divBorder">
 			
-		<p class="pLeft" onmouseover="this.style.background='lightblue'" onmouseout="this.style.background=''"><a href="" style="color:black;text-decoration:none;">公司简介</a></p>
+		<p class="pLeft" onmouseover="this.style.background='lightblue'" onmouseout="this.style.background=''"><a href="" style="color:black;text-decoration:none;">查看公司</a></p>
 				
-		<p class="pLeft" onmouseover="this.style.background='lightblue'" onmouseout="this.style.background=''"><a href="" style="color:black;text-decoration:none;">老板介绍</a></p>
+		<p class="pLeft" onmouseover="this.style.background='lightblue'" onmouseout="this.style.background=''"><a href="" style="color:black;text-decoration:none;">查看考勤</a></p>
 				
-		<p class="pLeft" onmouseover="this.style.background='lightblue'" onmouseout="this.style.background=''"><a href="" style="color:black;text-decoration:none;">公司宗旨</a></p>
+		<p class="pLeft" onmouseover="this.style.background='lightblue'" onmouseout="this.style.background=''"><a href="" style="color:black;text-decoration:none;">查看</a></p>
 				
 		<p class="pLeft" onmouseover="this.style.background='lightblue'" onmouseout="this.style.background=''"><a href="" style="color:black;text-decoration:none;">制作相关</a></p>
 				
-		<p class="pLeft" onmouseover="this.style.background='lightblue'" onmouseout="this.style.background=''"><a href="" style="color:black;text-decoration:none;">推荐音乐</a></p>
+		<p class="pLeft" onmouseover="this.style.background='lightblue'" onmouseout="this.style.background=''"><a href="" style="color:black;text-decoration:none;">待处理信息</a></p>
 				
-		<p class="pLeft" onmouseover="this.style.background='lightblue'" onmouseout="this.style.background=''"><a href="" style="color:black;text-decoration:none;">获奖记录</a></p>
+		<p class="pLeft" onmouseover="this.style.background='lightblue'" onmouseout="this.style.background=''"><a href="" style="color:black;text-decoration:none;">已处理信息</a></p>
 			
 		<p class="pLeft" onmouseover="this.style.background='lightblue'" onmouseout="this.style.background=''"><a href="http://www.ivsky.com/bizhi/our_times_t32480/" style="color:black;text-decoration:none;">精美壁纸</a></p>
 			
 	</div>
 
-	<!--宣传pv和公司简介-->
+	<!--主操作界面-->
 	<div class = "midTopBiv">
-		<p class = "pvTilte">公司宣传PV</p>
-		<video width="100%" height="57%" controls="controls">
-			<source src="${pageContext.request.contextPath}/video/君の名はPV.mp4" type="video/mp4">
-			<source src="${pageContext.request.contextPath}/video/君の名はPV.ogg" type="video/ogg">
-		</video><br/>
-		<p align="center"><strong>公司简介</strong></p>
-		<p>&nbsp&nbsp卢西奥婚恋网是中国一家通过网上实名进行交友和婚恋的服务商，以“帮助亿万中国人拥有幸福的婚姻和家庭”为己任。</p>
-		<p>&nbsp&nbsp卢西奥婚恋网的线下实体店行业领先，目前已在全国开设100城市实体店。卢西奥婚恋网的目标是集各地优势，合百家文化，共建全国最大的开放式平台，为中国单身男女提供专业的婚恋咨询、婚恋指导、婚恋匹配。卢西奥婚恋网的目标是通过不断探索和创新，奠定中国现代婚恋服务业的基础，成为行业龙头企业。</p>
+		<p class="pLeft">manager</p>
 	</div>
 		
 	<!--登录注册的连接-->
 	<div class = "rightTopBiv divBorder">
-		<br/>
-		<a href="${pageContext.request.contextPath}/index/toRegister" style="color:black;text-decoration:none;">注册</a><br/>
-		<br/>
-		<a href="${pageContext.request.contextPath}/index/toLogin" style="color:black;text-decoration:none;">登录</a>
-	
+		${sessionScope.user.uName }<br/>
+		${sessionScope.user.uCreateTime }<br/>
+		<input type="button" value="退出" onclick="javascrtpt:window.location.href='${pageContext.request.contextPath}/index.jsp'">
 	</div>
 
 	<!---->

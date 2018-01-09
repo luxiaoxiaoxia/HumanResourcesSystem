@@ -26,7 +26,7 @@ public class TestEmployeeDao {
 	
 	@Test
 	public void insertEmployee() {
-		Employee e = new Employee(-1, "xiaoxia", "xiao", MD5Util.md5("111"), "男", 18, "大学", 13817717717L, "234@qq.com", new Date(), 1, new Department(1, "", new Date(), 0), new Position(1, "咸鱼组员", new Date(), 1, new Department(1, null, null, 1),0), "共党", "共党", "共党");
+		Employee e = new Employee(-1, "root", "root", MD5Util.md5("111111"), "男", 18, "大学", 13817717717L, "234@qq.com", new Date(), 3, null, null, "共党", "共党", "共党");
 		employeeDao.insertEmployee(e);
 	}
 	
@@ -38,7 +38,8 @@ public class TestEmployeeDao {
 	
 	@Test
 	public void updateEmployee() {
-		Employee e = new Employee(1, "xiaoxia111", "xiao", MD5Util.md5("222"), "男", 18, "大学", 13817717717L, "234@qq.com", new Date(), 1, new Department(1, "", new Date(), 0), new Position(1, "咸鱼组员", new Date(), 1, new Department(1, null, null, 1),0), "共党", "共党", "共党");
+		Employee e = employeeDao.queryEmployeeByEId(2);
+		e.setePassword(MD5Util.md5("111111"));
 		int res = employeeDao.updateEmployee(e);
 		System.out.println(res);
 	}

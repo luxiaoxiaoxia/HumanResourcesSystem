@@ -2,6 +2,101 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ssm.dao.AttendanceDao">
 	
+	<insert id="insertAttendance" parameterType="Attendance">
+		insert into
+			attendances(
+				e_id,
+				a_year,
+				a_month,
+				a_day,
+				a_check_in_time,
+				a_check_out_time,
+				minute
+			)
+		values(
+			#{eId},
+			#{aYear},
+			#{aMonth},
+			#{aDay},
+			#{aCheckInTime},
+			#{aCheckOutTime},
+			#{minute}
+		)
+	</insert>
 	
+	<delete id="deleteAttendance" parameterType="int">
+		delete from
+			attendances
+		where
+			a_id = #{aId}
+	</delete>
+	
+	<update id="updateAttendance" parameterType="Attendance">
+		update
+			attendances
+		set
+			e_id=#{eId},
+			a_year=#{aYear},
+			a_month=#{aMonth},
+			a_day=#{aDay},
+			a_check_in_time=#{aCheckInTime},
+			a_check_out_time=#{aCheckOutTime},
+			minute=#{minute}
+		where
+			a_id = #{aId}
+	</update>
+	
+	<select id="queryAttendanceByAId" parameterType="int" resultType="Attendance">
+		select
+			*
+		from
+			attendances
+		where
+			a_id = #{aId}
+	</select>
+	
+	<select id="queryAttendanceByEIdAndAYearAndAMonthAndADay" parameterType="int" resultType="Attendance">
+		select
+			*
+		from
+			attendances
+		where
+			e_id = #{eId}
+		and
+			a_year = #{aYear}
+		and
+			a_month = #{aMonth}
+		and
+			a_day = #{aDay}
+	</select>
+	
+	<select id="queryAttendanceByAYearAndAMonthAndADay" parameterType="int" resultType="Attendance">
+		select
+			*
+		from
+			attendances
+		where
+			a_year = #{aYear}
+		and
+			a_month = #{aMonth}
+		and
+			a_day = #{aDay}
+	</select>
+	
+	<select id="queryAttendanceByEId" parameterType="int" resultType="Attendance">
+		select
+			*
+		from
+			attendances
+		where
+			e_id = #{eId}
+	</select>
+	
+	<select id="queryAllAttendance" resultType="Attendance">
+		select
+			*
+		from
+			attendances
+	</select>
 	
 </mapper>

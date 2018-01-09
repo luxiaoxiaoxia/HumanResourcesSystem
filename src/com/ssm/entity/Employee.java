@@ -14,7 +14,7 @@ public class Employee {
 	private long ePhotoNumber;//员工手机号
 	private String eEmail;//游客email
 	private Date eEntryDate;//入职时间 
-	private int eType;//-1.离职员工;1.普通员工;2.部门经理;3.管理员;
+	private int eType;//1.普通员工;2.部门经理;3.管理员;
 	private Department eDepartment;//部门
 	private Position ePosition;//职位
 	private String ePoliticalStatus;//政治面貌

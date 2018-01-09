@@ -22,7 +22,7 @@ public class TestInterviewRecordDao {
 	@Autowired
 	private InterviewRecordDao interviewRecordDao;
 	
-	@Test
+	/*@Test
 	public void insertInterviewRecord() {
 		User u = new User();
 		u.setuId(1);
@@ -53,11 +53,11 @@ public class TestInterviewRecordDao {
 		am.setAmId(1);
 		InterviewRecord ir = new InterviewRecord(1, u, e, e1, new Date(), am, 2);
 		interviewRecordDao.updateInterviewRecord(ir);
-	}
+	}*/
 	
 	@Test
 	public void queryInterviewRecordByIrId() {
-		InterviewRecord ir = interviewRecordDao.queryInterviewRecordByIrId(1);
+		InterviewRecord ir = interviewRecordDao.queryInterviewRecordByIrId(2);
 		System.out.println(ir);
 	}
 	

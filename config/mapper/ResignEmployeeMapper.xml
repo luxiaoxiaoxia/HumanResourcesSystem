@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssm.dao.ResignEmployeeDao">
+	
+	<insert id="insertResignEmployee" parameterType="ResignEmployee">
+		insert into
+			resignemployees(
+				re_name,
+				re_real_name,
+				re_password,
+				re_sex,
+				re_age,
+				re_education,
+				re_photo_number,
+				re_email,
+				re_entry_date,
+				re_type,
+				re_d_id,
+				re_p_id,
+				re_political_status,
+				re_hobby,
+				re_leave_date,
+				re_remark
+			)
+		values(
+			#{reName},
+			#{reRealName},
+			#{rePassword},
+			#{reSex},
+			#{reAge},
+			#{reEducation},
+			#{rePhotoNumber},
+			#{reEmail},
+			#{reEntryDate},
+			#{reType},
+			#{reDId},
+			#{rePId},
+			#{rePoliticalStatus},
+			#{reHobby},
+			#{reLeaveDate},
+			#{reRemark}
+		)
+	</insert>
+	
+	<delete id="deleteResignEmployee" parameterType="int">
+		delete from
+			resignemployees
+		where
+			re_id = #{reId}
+	</delete>
+	
+	<update id="updateResignEmployee" parameterType="ResignEmployee">
+		update
+			resignemployees
+		set
+			re_name=#{reName},
+			re_real_name=#{reRealName},
+			re_password=#{rePassword},
+			re_sex=#{reSex},
+			re_age=#{reAge},
+			re_education=#{reEducation},
+			re_photo_number=#{rePhotoNumber},
+			re_email=#{reEmail},
+			re_entry_date=#{reEntryDate},
+			re_type=#{reType},
+			re_d_id=#{reDId},
+			re_p_id=#{rePId},
+			re_political_status=#{rePoliticalStatus},
+			re_hobby=#{reHobby},
+			re_leave_date=#{reLeaveDate},
+			re_remark=#{reRemark}
+		where
+			re_id = #{reId}
+	</update>
+	
+	<select id="queryResignEmployeeByReId" parameterType="int" resultType="ResignEmployee">
+		select
+			*
+		from
+			resignemployees
+		where
+			re_id = #{reId}
+	</select>
+	
+	<select id="queryResignEmployeeByReName" parameterType="String" resultType="ResignEmployee">
+		select
+			*
+		from
+			resignemployees
+		where
+			re_name = #{reName}
+	</select>
+	
+	<select id="queryResignEmployeeByReDId" parameterType="int" resultType="ResignEmployee">
+		select
+			*
+		from
+			resignemployees
+		where
+			re_d_id = #{reDId}
+	</select>
+	
+	<select id="queryResignEmployeeByRePId" parameterType="int" resultType="ResignEmployee">
+		select
+			*
+		from
+			resignemployees
+		where
+			re_p_id = #{rePId}
+	</select>
+	
+	<select id="queryAllResignEmployee" resultType="ResignEmployee">
+		select
+			*
+		from
+			resignemployees
+	</select>
+	
+</mapper>

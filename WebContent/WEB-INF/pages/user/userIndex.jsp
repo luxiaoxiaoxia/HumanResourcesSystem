@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf8">
-<title>index</title>
+<title>userIndex</title>
 <style>
 	/*
 		界面背景设置
@@ -156,11 +156,8 @@
 		
 	<!--登录注册的连接-->
 	<div class = "rightTopBiv divBorder">
-		<br/>
-		<a href="${pageContext.request.contextPath}/index/toRegister" style="color:black;text-decoration:none;">注册</a><br/>
-		<br/>
-		<a href="${pageContext.request.contextPath}/index/toLogin" style="color:black;text-decoration:none;">登录</a>
-	
+		${sessionScope.user.uName }<br/>
+		${sessionScope.user.uCreateTime }
 	</div>
 
 	<!---->
