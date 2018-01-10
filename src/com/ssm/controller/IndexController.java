@@ -41,11 +41,11 @@ public class IndexController {
 	
 	@RequestMapping("/register")
 	public String register(User user,HttpSession session,Model model) {
-		user.setuPassword(MD5Util.md5(user.getuPassword()));
-		user.setuType(0);
-		user.setuCreateTime(new Date());
+		user.setUPassword(MD5Util.md5(user.getUPassword()));
+		user.setUType(0);
+		user.setUCreateTime(new Date());
 		boolean flag = userService.addUser(user);
-		User user1 = userService.findUserByUName(user.getuName());
+		User user1 = userService.findUserByUName(user.getUName());
 		if(flag) {
 			session.setAttribute("user", user1);
 			return "user/userIndex";
@@ -61,7 +61,7 @@ public class IndexController {
 		Employee employee = employeeService.findEmployeeByENameAndEPassword(name, MD5Util.md5(password));
 		if(user == null && employee != null) {
 			session.setAttribute("employee", employee);
-			switch (employee.geteType()) {
+			switch (employee.getEType()) {
 			case 1:
 				return "employee/employeeIndex";
 			case 2:

@@ -13,5 +13,7 @@ public interface ManagerService {
 	public List<Position> findPositionByDId(Integer dId);
 	
 	public List<Employee> findEmployeeByPId(Integer pId);
+	
+	public List<Employee> findEmployeeByDId(Integer dId);
 
 }

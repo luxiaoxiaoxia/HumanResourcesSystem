@@ -23,6 +23,10 @@ public class User {
 		this.uCreateTime = uCreateTime;
 	}
 
+	public Integer getUId() {
+		return uId;
+	}
+
 	public Integer getuId() {
 		return uId;
 	}
@@ -60,6 +64,42 @@ public class User {
 	}
 
 	public void setuCreateTime(Date uCreateTime) {
+		this.uCreateTime = uCreateTime;
+	}
+
+	public void setUId(Integer uId) {
+		this.uId = uId;
+	}
+
+	public String getUName() {
+		return uName;
+	}
+
+	public void setUName(String uName) {
+		this.uName = uName;
+	}
+
+	public String getUPassword() {
+		return uPassword;
+	}
+
+	public void setUPassword(String uPassword) {
+		this.uPassword = uPassword;
+	}
+
+	public int getUType() {
+		return uType;
+	}
+
+	public void setUType(int uType) {
+		this.uType = uType;
+	}
+
+	public Date getUCreateTime() {
+		return uCreateTime;
+	}
+
+	public void setUCreateTime(Date uCreateTime) {
 		this.uCreateTime = uCreateTime;
 	}
 

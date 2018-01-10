@@ -64,6 +64,38 @@ public class Salary {
 		this.sMonth = sMonth;
 	}
 
+	public Integer getSId() {
+		return sId;
+	}
+
+	public void setSId(Integer sId) {
+		this.sId = sId;
+	}
+
+	public Integer getEId() {
+		return eId;
+	}
+
+	public void setEId(Integer eId) {
+		this.eId = eId;
+	}
+
+	public Integer getSYear() {
+		return sYear;
+	}
+
+	public void setSYear(Integer sYear) {
+		this.sYear = sYear;
+	}
+
+	public Integer getSMonth() {
+		return sMonth;
+	}
+
+	public void setSMonth(Integer sMonth) {
+		this.sMonth = sMonth;
+	}
+
 	public double getSumSalary() {
 		return sumSalary;
 	}

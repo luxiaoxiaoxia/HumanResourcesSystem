@@ -22,7 +22,7 @@ public class TestApplicationMessageDao {
 	@Autowired
 	private ApplicationMessageDao applicationMessageDao;
 	
-	@Test
+	/*@Test
 	public void insertApplicationMessage() {
 		Resume r = new Resume();
 		r.setrId(1);
@@ -43,7 +43,7 @@ public class TestApplicationMessageDao {
 		ApplicationMessage a = new ApplicationMessage(1, new User(1, null, null, 1, null), new RecruitmentMessage(3, null, null, null, null, 0), r, new Date(), 1);
 		int res = applicationMessageDao.updateApplicationMessage(a);
 		System.out.println(res);
-	}
+	}*/
 	
 	@Test
 	public void queryApplicationMessageByAmId() {

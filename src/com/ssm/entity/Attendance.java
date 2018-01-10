@@ -90,6 +90,62 @@ public class Attendance {
 		this.aCheckOutTime = aCheckOutTime;
 	}
 
+	public Integer getAId() {
+		return aId;
+	}
+
+	public void setAId(Integer aId) {
+		this.aId = aId;
+	}
+
+	public Integer getEId() {
+		return eId;
+	}
+
+	public void setEId(Integer eId) {
+		this.eId = eId;
+	}
+
+	public int getAYear() {
+		return aYear;
+	}
+
+	public void setAYear(int aYear) {
+		this.aYear = aYear;
+	}
+
+	public int getAMonth() {
+		return aMonth;
+	}
+
+	public void setAMonth(int aMonth) {
+		this.aMonth = aMonth;
+	}
+
+	public int getADay() {
+		return aDay;
+	}
+
+	public void setADay(int aDay) {
+		this.aDay = aDay;
+	}
+
+	public Date getACheckInTime() {
+		return aCheckInTime;
+	}
+
+	public void setACheckInTime(Date aCheckInTime) {
+		this.aCheckInTime = aCheckInTime;
+	}
+
+	public Date getACheckOutTime() {
+		return aCheckOutTime;
+	}
+
+	public void setACheckOutTime(Date aCheckOutTime) {
+		this.aCheckOutTime = aCheckOutTime;
+	}
+
 	public int getMinute() {
 		return minute;
 	}

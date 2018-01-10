@@ -175,6 +175,134 @@ public class Employee {
 		this.eRemark = eRemark;
 	}
 
+	public Integer getEId() {
+		return eId;
+	}
+
+	public void setEId(Integer eId) {
+		this.eId = eId;
+	}
+
+	public String getEName() {
+		return eName;
+	}
+
+	public void setEName(String eName) {
+		this.eName = eName;
+	}
+
+	public String getERealName() {
+		return eRealName;
+	}
+
+	public void setERealName(String eRealName) {
+		this.eRealName = eRealName;
+	}
+
+	public String getEPassword() {
+		return ePassword;
+	}
+
+	public void setEPassword(String ePassword) {
+		this.ePassword = ePassword;
+	}
+
+	public String getESex() {
+		return eSex;
+	}
+
+	public void setESex(String eSex) {
+		this.eSex = eSex;
+	}
+
+	public int getEAge() {
+		return eAge;
+	}
+
+	public void setEAge(int eAge) {
+		this.eAge = eAge;
+	}
+
+	public String getEEducation() {
+		return eEducation;
+	}
+
+	public void setEEducation(String eEducation) {
+		this.eEducation = eEducation;
+	}
+
+	public long getEPhotoNumber() {
+		return ePhotoNumber;
+	}
+
+	public void setEPhotoNumber(long ePhotoNumber) {
+		this.ePhotoNumber = ePhotoNumber;
+	}
+
+	public String getEEmail() {
+		return eEmail;
+	}
+
+	public void setEEmail(String eEmail) {
+		this.eEmail = eEmail;
+	}
+
+	public Date getEEntryDate() {
+		return eEntryDate;
+	}
+
+	public void setEEntryDate(Date eEntryDate) {
+		this.eEntryDate = eEntryDate;
+	}
+
+	public int getEType() {
+		return eType;
+	}
+
+	public void setEType(int eType) {
+		this.eType = eType;
+	}
+
+	public Department getEDepartment() {
+		return eDepartment;
+	}
+
+	public void setEDepartment(Department eDepartment) {
+		this.eDepartment = eDepartment;
+	}
+
+	public Position getEPosition() {
+		return ePosition;
+	}
+
+	public void setEPosition(Position ePosition) {
+		this.ePosition = ePosition;
+	}
+
+	public String getEPoliticalStatus() {
+		return ePoliticalStatus;
+	}
+
+	public void setEPoliticalStatus(String ePoliticalStatus) {
+		this.ePoliticalStatus = ePoliticalStatus;
+	}
+
+	public String getEHobby() {
+		return eHobby;
+	}
+
+	public void setEHobby(String eHobby) {
+		this.eHobby = eHobby;
+	}
+
+	public String getERemark() {
+		return eRemark;
+	}
+
+	public void setERemark(String eRemark) {
+		this.eRemark = eRemark;
+	}
+
 	@Override
 	public String toString() {
 		return "Employee [eId=" + eId + ", eName=" + eName + ", eRealName=" + eRealName + ", ePassword=" + ePassword

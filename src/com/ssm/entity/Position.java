@@ -74,6 +74,54 @@ public class Position {
 		this.pBaseSalary = pBaseSalary;
 	}
 
+	public Integer getPId() {
+		return pId;
+	}
+
+	public void setPId(Integer pId) {
+		this.pId = pId;
+	}
+
+	public String getPName() {
+		return pName;
+	}
+
+	public void setPName(String pName) {
+		this.pName = pName;
+	}
+
+	public Date getPCreateTime() {
+		return pCreateTime;
+	}
+
+	public void setPCreateTime(Date pCreateTime) {
+		this.pCreateTime = pCreateTime;
+	}
+
+	public int getPType() {
+		return pType;
+	}
+
+	public void setPType(int pType) {
+		this.pType = pType;
+	}
+
+	public Department getPDepartment() {
+		return pDepartment;
+	}
+
+	public void setPDepartment(Department pDepartment) {
+		this.pDepartment = pDepartment;
+	}
+
+	public double getPBaseSalary() {
+		return pBaseSalary;
+	}
+
+	public void setPBaseSalary(double pBaseSalary) {
+		this.pBaseSalary = pBaseSalary;
+	}
+
 	@Override
 	public String toString() {
 		return "Position [pId=" + pId + ", pName=" + pName + ", pCreateTime=" + pCreateTime + ", pType=" + pType

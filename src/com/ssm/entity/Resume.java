@@ -185,6 +185,142 @@ public class Resume {
 		this.rType = rType;
 	}
 
+	public Integer getRId() {
+		return rId;
+	}
+
+	public void setRId(Integer rId) {
+		this.rId = rId;
+	}
+
+	public User getRUser() {
+		return rUser;
+	}
+
+	public void setRUser(User rUser) {
+		this.rUser = rUser;
+	}
+
+	public String getURealName() {
+		return uRealName;
+	}
+
+	public void setURealName(String uRealName) {
+		this.uRealName = uRealName;
+	}
+
+	public String getUSex() {
+		return uSex;
+	}
+
+	public void setUSex(String uSex) {
+		this.uSex = uSex;
+	}
+
+	public int getUAge() {
+		return uAge;
+	}
+
+	public void setUAge(int uAge) {
+		this.uAge = uAge;
+	}
+
+	public String getUEducation() {
+		return uEducation;
+	}
+
+	public void setUEducation(String uEducation) {
+		this.uEducation = uEducation;
+	}
+
+	public long getUPhotoNumber() {
+		return uPhotoNumber;
+	}
+
+	public void setUPhotoNumber(long uPhotoNumber) {
+		this.uPhotoNumber = uPhotoNumber;
+	}
+
+	public String getUEmail() {
+		return uEmail;
+	}
+
+	public void setUEmail(String uEmail) {
+		this.uEmail = uEmail;
+	}
+
+	public Department getUDepartment() {
+		return uDepartment;
+	}
+
+	public void setUDepartment(Department uDepartment) {
+		this.uDepartment = uDepartment;
+	}
+
+	public Position getUPosition() {
+		return uPosition;
+	}
+
+	public void setUPosition(Position uPosition) {
+		this.uPosition = uPosition;
+	}
+
+	public int getUWorkTime() {
+		return uWorkTime;
+	}
+
+	public void setUWorkTime(int uWorkTime) {
+		this.uWorkTime = uWorkTime;
+	}
+
+	public double getUSalary() {
+		return uSalary;
+	}
+
+	public void setUSalary(double uSalary) {
+		this.uSalary = uSalary;
+	}
+
+	public String getUBeforeJob() {
+		return uBeforeJob;
+	}
+
+	public void setUBeforeJob(String uBeforeJob) {
+		this.uBeforeJob = uBeforeJob;
+	}
+
+	public String getUPoliticalStatus() {
+		return uPoliticalStatus;
+	}
+
+	public void setUPoliticalStatus(String uPoliticalStatus) {
+		this.uPoliticalStatus = uPoliticalStatus;
+	}
+
+	public String getUHobby() {
+		return uHobby;
+	}
+
+	public void setUHobby(String uHobby) {
+		this.uHobby = uHobby;
+	}
+
+	public Date getUResumeDate() {
+		return uResumeDate;
+	}
+
+	public void setUResumeDate(Date uResumeDate) {
+		this.uResumeDate = uResumeDate;
+	}
+
+	public int getRType() {
+		return rType;
+	}
+
+	public void setRType(int rType) {
+		this.rType = rType;
+	}
+
 	@Override
 	public String toString() {
 		return "Resume [rId=" + rId + ", rUser=" + rUser + ", uRealName=" + uRealName + ", uSex=" + uSex + ", uAge="

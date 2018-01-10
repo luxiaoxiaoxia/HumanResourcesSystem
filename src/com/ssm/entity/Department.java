@@ -53,6 +53,38 @@ public class Department {
 		this.dType = dType;
 	}
 
+	public Integer getDId() {
+		return dId;
+	}
+
+	public void setDId(Integer dId) {
+		this.dId = dId;
+	}
+
+	public String getDName() {
+		return dName;
+	}
+
+	public void setDName(String dName) {
+		this.dName = dName;
+	}
+
+	public Date getDCreateTime() {
+		return dCreateTime;
+	}
+
+	public void setDCreateTime(Date dCreateTime) {
+		this.dCreateTime = dCreateTime;
+	}
+
+	public int getDType() {
+		return dType;
+	}
+
+	public void setDType(int dType) {
+		this.dType = dType;
+	}
+
 	@Override
 	public String toString() {
 		return "Department [dId=" + dId + ", dName=" + dName + ", dCreateTime=" + dCreateTime + ", dType=" + dType

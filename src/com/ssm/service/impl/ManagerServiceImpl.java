@@ -37,4 +37,9 @@ public class ManagerServiceImpl implements ManagerService{
 		return employeeDao.queryEmployeeByEPId(pId);
 	}
 
+	@Override
+	public List<Employee> findEmployeeByDId(Integer dId) {
+		return employeeDao.queryEmployeeByEDId(dId);
+	}
+
 }

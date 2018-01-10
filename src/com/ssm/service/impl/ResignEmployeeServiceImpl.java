@@ -24,7 +24,7 @@ public class ResignEmployeeServiceImpl implements ResignEmployeeService{
 		if(res > 0) {
 			flag = true;
 		}
-		return false;
+		return flag;
 	}
 
 }

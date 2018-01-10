@@ -36,13 +36,13 @@ public class TestEmployeeDao {
 		System.out.println(res);
 	}
 	
-	@Test
+	/*@Test
 	public void updateEmployee() {
 		Employee e = employeeDao.queryEmployeeByEId(2);
 		e.setePassword(MD5Util.md5("111111"));
 		int res = employeeDao.updateEmployee(e);
 		System.out.println(res);
-	}
+	}*/
 	
 	@Test
 	public void queryEmployeeByEId() {
