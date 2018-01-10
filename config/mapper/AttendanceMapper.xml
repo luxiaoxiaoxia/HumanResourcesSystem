@@ -11,7 +11,9 @@
 				a_day,
 				a_check_in_time,
 				a_check_out_time,
-				minute
+				minute,
+				morning_minute,
+				afternoon_minute
 			)
 		values(
 			#{eId},
@@ -20,7 +22,9 @@
 			#{aDay},
 			#{aCheckInTime},
 			#{aCheckOutTime},
-			#{minute}
+			#{minute},
+			#{morningMinute},
+			#{afternoonMinute}
 		)
 	</insert>
 	
@@ -41,7 +45,9 @@
 			a_day=#{aDay},
 			a_check_in_time=#{aCheckInTime},
 			a_check_out_time=#{aCheckOutTime},
-			minute=#{minute}
+			minute=#{minute},
+			morning_minute=#{morningMinute},
+			afternoon_minute=#{afternoonMinute}
 		where
 			a_id = #{aId}
 	</update>

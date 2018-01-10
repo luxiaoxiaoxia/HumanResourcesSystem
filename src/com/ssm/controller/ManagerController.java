@@ -21,7 +21,7 @@ public class ManagerController {
 	public String findAllDepartment(Model model) {
 		List<Department> dList = managerService.findAllDepartment();
 		model.addAttribute("dList", dList);
-		return "lar/register";
+		return "manager/managerIndex";
 	}
 
 }

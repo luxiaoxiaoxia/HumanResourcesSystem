@@ -126,7 +126,7 @@
 				<tr>
 					<td></td>
 					<td>
-						<input type="submit" value="注册">&nbsp&nbsp<input type="button" value="返回" onclick="javascrtpt:window.location.href='${pageContext.request.contextPath}/index.jsp'">
+						<input type="submit" value="登录">&nbsp&nbsp<input type="button" value="返回" onclick="javascrtpt:window.location.href='${pageContext.request.contextPath}/index.jsp'">
 					</td>
 				</tr>
 			</table>

@@ -20,7 +20,7 @@ public class TestAttendanceDao {
 	@Autowired
 	private AttendanceDao attendanceDao;
 	
-	@Test
+	/*@Test
 	public void insertAttendance() {
 		Attendance att =new Attendance(-1, 1, 2017, 12, 5, new Date());
 		attendanceDao.insertAttendance(att);
@@ -37,7 +37,7 @@ public class TestAttendanceDao {
 		Attendance att =new Attendance(1, 1, 2017, 12, 3, new Date(),new Date(),1);
 		int res = attendanceDao.updateAttendance(att);
 		System.out.println(res);
-	}
+	}*/
 	
 	@Test
 	public void queryAttendanceByAId() {

@@ -12,34 +12,15 @@ public class Attendance {
 	private Date aCheckInTime;
 	private Date aCheckOutTime;
 	private int minute;
+	private int morningMinute;
+	private int afternoonMinute;
 	
 	public Attendance() {
 		super();
 	}
 
-	public Attendance(Integer aId, Integer eId, int aYear, int aMonth, int aDay, Date aCheckOutTime, int minute) {
-		super();
-		this.aId = aId;
-		this.eId = eId;
-		this.aYear = aYear;
-		this.aMonth = aMonth;
-		this.aDay = aDay;
-		this.aCheckOutTime = aCheckOutTime;
-		this.minute = minute;
-	}
-
-	public Attendance(Integer aId, Integer eId, int aYear, int aMonth, int aDay, Date aCheckInTime) {
-		super();
-		this.aId = aId;
-		this.eId = eId;
-		this.aYear = aYear;
-		this.aMonth = aMonth;
-		this.aDay = aDay;
-		this.aCheckInTime = aCheckInTime;
-	}
-
 	public Attendance(Integer aId, Integer eId, int aYear, int aMonth, int aDay, Date aCheckInTime, Date aCheckOutTime,
-			int minute) {
+			int minute, int morningMinute, int afternoonMinute) {
 		super();
 		this.aId = aId;
 		this.eId = eId;
@@ -49,6 +30,8 @@ public class Attendance {
 		this.aCheckInTime = aCheckInTime;
 		this.aCheckOutTime = aCheckOutTime;
 		this.minute = minute;
+		this.morningMinute = morningMinute;
+		this.afternoonMinute = afternoonMinute;
 	}
 
 	public Integer getaId() {
@@ -115,10 +98,27 @@ public class Attendance {
 		this.minute = minute;
 	}
 
+	public int getMorningMinute() {
+		return morningMinute;
+	}
+
+	public void setMorningMinute(int morningMinute) {
+		this.morningMinute = morningMinute;
+	}
+
+	public int getAfternoonMinute() {
+		return afternoonMinute;
+	}
+
+	public void setAfternoonMinute(int afternoonMinute) {
+		this.afternoonMinute = afternoonMinute;
+	}
+
 	@Override
 	public String toString() {
 		return "Attendance [aId=" + aId + ", eId=" + eId + ", aYear=" + aYear + ", aMonth=" + aMonth + ", aDay=" + aDay
-				+ ", aCheckInTime=" + aCheckInTime + ", aCheckOutTime=" + aCheckOutTime + ", minute=" + minute + "]";
+				+ ", aCheckInTime=" + aCheckInTime + ", aCheckOutTime=" + aCheckOutTime + ", minute=" + minute
+				+ ", morningMinute=" + morningMinute + ", afternoonMinute=" + afternoonMinute + "]";
 	}
 
 	

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf8"
     pageEncoding="utf8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -115,6 +116,15 @@
 	}
 
 </style>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.7.2.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#position").hide();
+		$("#employee").hide();
+		$("#eMsg").hide();
+	})
+	
+</script>
 </head>
 <body background="${pageContext.request.contextPath}/img/desireview2.jpg">
 	<!--主标题-->
@@ -126,13 +136,15 @@
 	<!--导向-->
 	<div class = "leftBiv divBorder">
 			
-		<p class="pLeft" onmouseover="this.style.background='lightblue'" onmouseout="this.style.background=''"><a href="" style="color:black;text-decoration:none;">查看公司</a></p>
+		<p class="pLeft" onmouseover="this.style.background='lightblue'" onmouseout="this.style.background=''"><a href="${pageContext.request.contextPath}/manager/findAllDepartment" style="color:black;text-decoration:none;">查看公司</a></p>
 				
 		<p class="pLeft" onmouseover="this.style.background='lightblue'" onmouseout="this.style.background=''"><a href="" style="color:black;text-decoration:none;">查看考勤</a></p>
-				
-		<p class="pLeft" onmouseover="this.style.background='lightblue'" onmouseout="this.style.background=''"><a href="" style="color:black;text-decoration:none;">查看</a></p>
-				
-		<p class="pLeft" onmouseover="this.style.background='lightblue'" onmouseout="this.style.background=''"><a href="" style="color:black;text-decoration:none;">制作相关</a></p>
+		
+		<p class="pLeft" onmouseover="this.style.background='lightblue'" onmouseout="this.style.background=''"><a href="" style="color:black;text-decoration:none;">工资结算</a></p>
+		
+		<p class="pLeft" onmouseover="this.style.background='lightblue'" onmouseout="this.style.background=''"><a href="" style="color:black;text-decoration:none;">发布招聘信息</a></p>
+		
+		<p class="pLeft" onmouseover="this.style.background='lightblue'" onmouseout="this.style.background=''"><a href="" style="color:black;text-decoration:none;">查看招聘信息</a></p>
 				
 		<p class="pLeft" onmouseover="this.style.background='lightblue'" onmouseout="this.style.background=''"><a href="" style="color:black;text-decoration:none;">待处理信息</a></p>
 				
@@ -145,18 +157,79 @@
 	<!--主操作界面-->
 	<div class = "midTopBiv">
 		<p class="pLeft">manager</p>
+		<c:if test="${!empty requestScope.dList }">
+			<table>
+				<tr>
+					<td>部门id</td>
+					<td>部门name</td>
+					<td>查看职位</td>
+					<td>查看员工</td>
+					<td>修改部门</td>
+					<td>删除部门</td>
+				</tr>
+				<c:forEach items="${requestScope.dList }" var="dept">
+					<tr>
+						<td>${dept.dId}</td>
+						<td>${dept.dName}</td>
+						<td><a href="${dept.dId}" id="d-f-p">查看职位</a></td>
+						<td><a href="${dept.dId}" id="d-f-e">查看员工</a></td>
+						<td><a href="">修改部门</a></td>
+						<td><a href="">删除部门</a></td>
+					</tr>
+				</c:forEach>
+			</table>
+		</c:if>
+		<table id="position">
+			<tr>
+				<td>职位id</td>
+				<td>职位name</td>
+				<td>查看员工</td>
+				<td>修改职位</td>
+				<td>删除职位</td>
+			</tr>
+		</table>
+		<table id="employee">
+			<tr>
+				<td>员工id</td>
+				<td>员工name</td>
+				<td>查看员工详细信息</td>
+				<td>修改员工信息</td>
+				<td>删除员工</td>
+			</tr>
+		</table>
 	</div>
 		
 	<!--登录注册的连接-->
 	<div class = "rightTopBiv divBorder">
-		${sessionScope.user.uName }<br/>
-		${sessionScope.user.uCreateTime }<br/>
+		${sessionScope.employee.eName }<br/>
+		${sessionScope.employee.eEntryDate }<br/>
 		<input type="button" value="退出" onclick="javascrtpt:window.location.href='${pageContext.request.contextPath}/index.jsp'">
 	</div>
 
 	<!---->
 	<div class = "rightDownBiv divBorder">
-		
+		<table id="eMsg">
+			<tr>
+				<td>员工id：</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>员工name：</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>员工基本工资：</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>员工职位：</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>员工部门：</td>
+				<td></td>
+			</tr>
+		</table>
 	</div>
 
 	<!--友情链接区-->
