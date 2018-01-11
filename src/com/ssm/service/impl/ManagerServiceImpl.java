@@ -42,4 +42,29 @@ public class ManagerServiceImpl implements ManagerService{
 		return employeeDao.queryEmployeeByEDId(dId);
 	}
 
+	@Override
+	public Department findDepartmentByDId(Integer dId) {
+		return departmentDao.queryDepartmentByDId(dId);
+	}
+
+	@Override
+	public boolean updateDepartment(Department department) {
+		int res = departmentDao.updateDepartment(department);
+		boolean flag = false;
+		if(res > 0) {
+			flag = true;
+		}
+		return flag;
+	}
+
+	@Override
+	public boolean deleteDepartment(Integer dId) {
+		int res = departmentDao.deleteDepartment(dId);
+		boolean flag = false;
+		if(res > 0) {
+			flag = true;
+		}
+		return flag;
+	}
+
 }

@@ -15,5 +15,11 @@ public interface ManagerService {
 	public List<Employee> findEmployeeByPId(Integer pId);
 	
 	public List<Employee> findEmployeeByDId(Integer dId);
+	
+	public Department findDepartmentByDId(Integer dId);
+	
+	public boolean updateDepartment(Department department);
+	
+	public boolean deleteDepartment(Integer dId);
 
 }

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf8"
     pageEncoding="utf8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -135,7 +136,7 @@
 				dataType:"json",
 				data:{dId:dId},
 				success:function(data){
-					alert(data);
+					//alert(data);
 					$("tr[class='ptr']").remove();
 					$("#ptrFirst").before("<tr class='ptr'><td colspan='5' align='center'>"+dName+"</td></tr>");
 					$.each(data,function(index,item){
@@ -167,7 +168,7 @@
 				$("tr[class='etr']").remove();
 				$("#etrFirst").before("<tr class='etr'><td colspan='5' align='center'>"+dName+"</td></tr>");
 				$.each(data,function(index,item){
-					alert(item.eId);
+					//alert(item.eId);
 					$("#etrLast").before("<tr class='etr' id="+"e"+item.eId+"><td>"+item.eId+"</td><td>"+item.eName+
 							"</td><td>"+"<a href="+"javaScript:findEmployeeByEId("+item.eId+")"+">查看员工</a>"+
 							"</td><td>"+"<a href="+""+">修改职位</a>"+"</td><td>"+
@@ -180,6 +181,65 @@
 			}
 		})
 		return false;
+	}
+	
+	function deleteDepartment(dId){
+		var tr = $("#"+"d"+dId);
+		$.ajax({
+			url:"${pageContext.request.contextPath}/manager/deleteDepartment",
+			type:"post",
+			dataType:"json",
+			data:{dId:dId},
+			success:function(data){
+				//alert(data);
+				if(data == 1){
+					tr.remove();
+				}else{
+					alert("该部门暂时无法删除");
+				}
+			},
+			error:function(x,msg,obj){
+				alert(msg);
+			}
+		})
+		return false;
+	}
+	
+	function findEmployeeByPId(pId){
+		var tr = $("#"+"p"+pId);
+		var dName = tr.parent().children().eq(0).children().html();
+		alert(dName);
+		var pName = tr.children().eq(1).html();
+		alert(pName);
+		$.ajax({
+			url:"${pageContext.request.contextPath}/manager/findEmployeeByPId",
+			type:"post",
+			dataType:"json",
+			data:{pId:pId},
+			success:function(data){
+				alert(data);
+				$("tr[class='etr']").remove();
+				$("#etrFirst").before("<tr class='etr'><td colspan='5' align='center'>"+dName+pName+"</td></tr>");
+				$.each(data,function(index,item){
+					//alert(item.eId);
+					$("#etrLast").before("<tr class='etr' id="+"e"+item.eId+"><td>"+item.eId+"</td><td>"+item.eName+
+							"</td><td>"+"<a href="+"javaScript:findEmployeeByEId("+item.eId+")"+">查看员工</a>"+
+							"</td><td>"+"<a href="+""+">修改职位</a>"+"</td><td>"+
+							"<a href="+"javaScript:deletePosition("+item.eId+")"+">删除职位</a>"+"</td></tr>");
+				})
+				$("#employee").show();
+			},
+			error:function(x,msg,obj){
+				alert(msg);
+			}
+		})
+		return false;
+	}
+	
+	function deleteD() {
+		$("#position").hide();
+		$("#employee").hide();
+		$("#eMsg").hide();
 	}
 
 </script>
@@ -231,8 +291,8 @@
 						<td>${dept.dName}</td>
 						<td><a href="javaScript:findPositionByDId(${dept.dId})">查看职位</a></td>
 						<td><a href="javaScript:findEmployeeByDId(${dept.dId})">查看员工</a></td>
-						<td><a href="${pageContext.request.contextPath}/manager/toUpdate?dId=${dept.dId}">修改部门</a></td>
-						<td><a href="javaScript:deleteDepartment(${dept.dId})">删除部门</a></td>
+						<td><a href="${pageContext.request.contextPath}/manager/toUpdateDepartment?dId=${dept.dId}">修改部门</a></td>
+						<td><a href="javaScript:deleteDepartment(${dept.dId})" onclick="deleteD()">删除部门</a></td>
 					</tr>
 				</c:forEach>
 			</table>
