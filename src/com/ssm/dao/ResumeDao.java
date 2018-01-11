@@ -41,6 +41,8 @@ public interface ResumeDao {
 	 */
 	public List<Resume> queryResumeByUId(Integer uId);
 	
+	
+	
 	/**
 	 * 查询所有的简历
 	 * @return 简历集合

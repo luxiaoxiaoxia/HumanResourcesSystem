@@ -12,8 +12,8 @@ public class Resume {
 	private String uEducation;//游客学历
 	private long uPhotoNumber;//游客手机号
 	private String uEmail;//游客email
-	private Department uDepartment;//申请的部门
-	private Position uPosition;//申请的职位
+	private Integer uDId;//申请的部门
+	private Integer uPId;//申请的职位
 	private int uWorkTime;//工作经历
 	private double uSalary;//期望薪资
 	private String uBeforeJob;//上一份工作
@@ -26,8 +26,9 @@ public class Resume {
 		super();
 	}
 
+	
 	public Resume(Integer rId, User rUser, String uRealName, String uSex, int uAge, String uEducation,
-			long uPhotoNumber, String uEmail, Department uDepartment, Position uPosition, int uWorkTime, double uSalary,
+			long uPhotoNumber, String uEmail, Integer uDId, Integer uPId, int uWorkTime, double uSalary,
 			String uBeforeJob, String uPoliticalStatus, String uHobby, Date uResumeDate, int rType) {
 		super();
 		this.rId = rId;
@@ -38,8 +39,8 @@ public class Resume {
 		this.uEducation = uEducation;
 		this.uPhotoNumber = uPhotoNumber;
 		this.uEmail = uEmail;
-		this.uDepartment = uDepartment;
-		this.uPosition = uPosition;
+		this.uDId = uDId;
+		this.uPId = uPId;
 		this.uWorkTime = uWorkTime;
 		this.uSalary = uSalary;
 		this.uBeforeJob = uBeforeJob;
@@ -48,6 +49,9 @@ public class Resume {
 		this.uResumeDate = uResumeDate;
 		this.rType = rType;
 	}
+
+
+
 
 	public Integer getrId() {
 		return rId;
@@ -113,22 +117,7 @@ public class Resume {
 		this.uEmail = uEmail;
 	}
 
-	public Department getuDepartment() {
-		return uDepartment;
-	}
-
-	public void setuDepartment(Department uDepartment) {
-		this.uDepartment = uDepartment;
-	}
-
-	public Position getuPosition() {
-		return uPosition;
-	}
-
-	public void setuPosition(Position uPosition) {
-		this.uPosition = uPosition;
-	}
-
+	
 	public int getuWorkTime() {
 		return uWorkTime;
 	}
@@ -249,21 +238,7 @@ public class Resume {
 		this.uEmail = uEmail;
 	}
 
-	public Department getUDepartment() {
-		return uDepartment;
-	}
-
-	public void setUDepartment(Department uDepartment) {
-		this.uDepartment = uDepartment;
-	}
-
-	public Position getUPosition() {
-		return uPosition;
-	}
-
-	public void setUPosition(Position uPosition) {
-		this.uPosition = uPosition;
-	}
+	
 
 	public int getUWorkTime() {
 		return uWorkTime;
@@ -321,15 +296,57 @@ public class Resume {
 		this.rType = rType;
 	}
 
+
+	public Integer getUDId() {
+		return uDId;
+	}
+
+
+	public void setUDId(Integer uDId) {
+		this.uDId = uDId;
+	}
+
+
+	public Integer getUPId() {
+		return uPId;
+	}
+
+
+	public void setUPId(Integer uPId) {
+		this.uPId = uPId;
+	}
+
+
+	public Integer getuDId() {
+		return uDId;
+	}
+
+
+	public void setuDId(Integer uDId) {
+		this.uDId = uDId;
+	}
+
+
+	public Integer getuPId() {
+		return uPId;
+	}
+
+
+	public void setuPId(Integer uPId) {
+		this.uPId = uPId;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Resume [rId=" + rId + ", rUser=" + rUser + ", uRealName=" + uRealName + ", uSex=" + uSex + ", uAge="
 				+ uAge + ", uEducation=" + uEducation + ", uPhotoNumber=" + uPhotoNumber + ", uEmail=" + uEmail
-				+ ", uDepartment=" + uDepartment + ", uPosition=" + uPosition + ", uWorkTime=" + uWorkTime
-				+ ", uSalary=" + uSalary + ", uBeforeJob=" + uBeforeJob + ", uPoliticalStatus=" + uPoliticalStatus
-				+ ", uHobby=" + uHobby + ", uResumeDate=" + uResumeDate + ", rType=" + rType + "]";
+				+ ", uDId=" + uDId + ", uPId=" + uPId + ", uWorkTime=" + uWorkTime + ", uSalary=" + uSalary
+				+ ", uBeforeJob=" + uBeforeJob + ", uPoliticalStatus=" + uPoliticalStatus + ", uHobby=" + uHobby
+				+ ", uResumeDate=" + uResumeDate + ", rType=" + rType + "]";
 	}
 
+	
 	
 	
 

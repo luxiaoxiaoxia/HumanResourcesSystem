@@ -5,8 +5,8 @@ import java.util.Date;
 public class RecruitmentMessage {
 	
 	private Integer rmId;//招聘信息id
-	private Department rmDepartment;//部门
-	private Position rmPosition;//职位
+	private Integer rmDId;//部门
+	private Integer rmPId;//职位
 	private String rmMessage;//招聘信息
 	private Date rmCreateDate;//招聘信息创建时间
 	private int rmType;//0.信息过期;1.信息在线;
@@ -15,16 +15,18 @@ public class RecruitmentMessage {
 		super();
 	}
 
-	public RecruitmentMessage(Integer rmId, Department rmDepartment, Position rmPosition, String rmMessage,
-			Date rmCreateDate, int rmType) {
+	
+	public RecruitmentMessage(Integer rmId, Integer rmDId, Integer rmPId, String rmMessage, Date rmCreateDate,
+			int rmType) {
 		super();
 		this.rmId = rmId;
-		this.rmDepartment = rmDepartment;
-		this.rmPosition = rmPosition;
+		this.rmDId = rmDId;
+		this.rmPId = rmPId;
 		this.rmMessage = rmMessage;
 		this.rmCreateDate = rmCreateDate;
 		this.rmType = rmType;
 	}
+
 
 	public Integer getRmId() {
 		return rmId;
@@ -34,21 +36,25 @@ public class RecruitmentMessage {
 		this.rmId = rmId;
 	}
 
-	public Department getRmDepartment() {
-		return rmDepartment;
+	public Integer getRmDId() {
+		return rmDId;
 	}
 
-	public void setRmDepartment(Department rmDepartment) {
-		this.rmDepartment = rmDepartment;
+
+	public void setRmDId(Integer rmDId) {
+		this.rmDId = rmDId;
 	}
 
-	public Position getRmPosition() {
-		return rmPosition;
+
+	public Integer getRmPId() {
+		return rmPId;
 	}
 
-	public void setRmPosition(Position rmPosition) {
-		this.rmPosition = rmPosition;
+
+	public void setRmPId(Integer rmPId) {
+		this.rmPId = rmPId;
 	}
+
 
 	public String getRmMessage() {
 		return rmMessage;
@@ -74,11 +80,14 @@ public class RecruitmentMessage {
 		this.rmType = rmType;
 	}
 
+
 	@Override
 	public String toString() {
-		return "RecruitmentMessage [rmId=" + rmId + ", rmDepartment=" + rmDepartment + ", rmPosition=" + rmPosition
-				+ ", rmMessage=" + rmMessage + ", rmCreateDate=" + rmCreateDate + ", rmType=" + rmType + "]";
+		return "RecruitmentMessage [rmId=" + rmId + ", rmDId=" + rmDId + ", rmPId=" + rmPId + ", rmMessage=" + rmMessage
+				+ ", rmCreateDate=" + rmCreateDate + ", rmType=" + rmType + "]";
 	}
+
+	
 
 	
 	

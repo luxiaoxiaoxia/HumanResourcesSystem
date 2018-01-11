@@ -21,12 +21,12 @@ public class TestRecruitmentMessageDao {
 	@Autowired
 	private RecruitmentMessageDao recruitmentMessageDao;
 	
-	@Test
+	/*@Test
 	public void insertRecruitmentMessage() {
 		RecruitmentMessage rm = new RecruitmentMessage(-1, new Department(3, null, null, 1), new Position(3, null, null, 0, null,0), "Ì°ÍæÀ¶ÔÂ3", new Date(), 0);
 		int res = recruitmentMessageDao.insertRecruitmentMessage(rm);
 		System.out.println(res);
-	}
+	}*/
 	
 	@Test
 	public void deleteRecruitmentMessage() {
@@ -34,12 +34,12 @@ public class TestRecruitmentMessageDao {
 		System.out.println(res);
 	}
 	
-	@Test
+	/*@Test
 	public void updateRecruitmentMessage() {
 		RecruitmentMessage rm = new RecruitmentMessage(3, new Department(3, null, null, 1), new Position(3, null, null, 0, null,0), "Ì°ÍæÀ¶ÔÂ4", new Date(), 1);
 		int res = recruitmentMessageDao.updateRecruitmentMessage(rm);
 		System.out.println(res);
-	}
+	}*/
 	
 	@Test
 	public void queryRecruitmentMessageByRmId() {

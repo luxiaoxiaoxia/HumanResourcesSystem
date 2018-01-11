@@ -143,7 +143,7 @@
 						//alert(item.pId);
 						$("#ptrLast").before("<tr class='ptr'id="+"p"+item.pId+"><td>"+item.pId+"</td><td>"+item.pName+
 								"</td><td>"+"<a href="+"javaScript:findEmployeeByPId("+item.pId+")"+">查看员工</a>"+
-								"</td><td>"+"<a href="+""+">修改职位</a>"+"</td><td>"+
+								"</td><td>"+"<a href="+"${pageContext.request.contextPath}/manager/toUpdatePosition?pId="+item.pId+">修改职位</a>"+"</td><td>"+
 								"<a href="+"javaScript:deletePosition("+item.pId+")"+">删除职位</a>"+"</td></tr>");
 					})
 					$("#position").show();
@@ -164,15 +164,15 @@
 			dataType:"json",
 			data:{dId:dId},
 			success:function(data){
-				alert(data);
+				//alert(data);
 				$("tr[class='etr']").remove();
 				$("#etrFirst").before("<tr class='etr'><td colspan='5' align='center'>"+dName+"</td></tr>");
 				$.each(data,function(index,item){
 					//alert(item.eId);
 					$("#etrLast").before("<tr class='etr' id="+"e"+item.eId+"><td>"+item.eId+"</td><td>"+item.eName+
 							"</td><td>"+"<a href="+"javaScript:findEmployeeByEId("+item.eId+")"+">查看员工</a>"+
-							"</td><td>"+"<a href="+""+">修改职位</a>"+"</td><td>"+
-							"<a href="+"javaScript:deletePosition("+item.eId+")"+">删除职位</a>"+"</td></tr>");
+							"</td><td>"+"<a href="+"${pageContext.request.contextPath}/manager/toUpdateEmployee?eId="+item.eId+">修改员工</a>"+"</td><td>"+
+							"<a href="+"javaScript:deleteEmployee("+item.eId+")"+">解雇员工</a>"+"</td></tr>");
 				})
 				$("#employee").show();
 			},
@@ -208,24 +208,21 @@
 	function findEmployeeByPId(pId){
 		var tr = $("#"+"p"+pId);
 		var dName = tr.parent().children().eq(0).children().html();
-		alert(dName);
 		var pName = tr.children().eq(1).html();
-		alert(pName);
 		$.ajax({
 			url:"${pageContext.request.contextPath}/manager/findEmployeeByPId",
 			type:"post",
 			dataType:"json",
 			data:{pId:pId},
 			success:function(data){
-				alert(data);
 				$("tr[class='etr']").remove();
 				$("#etrFirst").before("<tr class='etr'><td colspan='5' align='center'>"+dName+pName+"</td></tr>");
 				$.each(data,function(index,item){
 					//alert(item.eId);
 					$("#etrLast").before("<tr class='etr' id="+"e"+item.eId+"><td>"+item.eId+"</td><td>"+item.eName+
 							"</td><td>"+"<a href="+"javaScript:findEmployeeByEId("+item.eId+")"+">查看员工</a>"+
-							"</td><td>"+"<a href="+""+">修改职位</a>"+"</td><td>"+
-							"<a href="+"javaScript:deletePosition("+item.eId+")"+">删除职位</a>"+"</td></tr>");
+							"</td><td>"+"<a href="+"${pageContext.request.contextPath}/manager/toUpdateEmployee?eId="+item.eId+">修改员工</a>"+"</td><td>"+
+							"<a href="+"javaScript:deleteEmployee("+item.eId+")"+">删除员工</a>"+"</td></tr>");
 				})
 				$("#employee").show();
 			},
@@ -236,8 +233,60 @@
 		return false;
 	}
 	
+	function deletePosition(pId){
+		var tr = $("#"+"p"+pId);
+		$.ajax({
+			url:"${pageContext.request.contextPath}/manager/deletePosition",
+			type:"post",
+			dataType:"json",
+			data:{pId:pId},
+			success:function(data){
+				//alert(data);
+				if(data == 1){
+					tr.remove();
+				}else{
+					alert("该职位暂时无法删除");
+				}
+			},
+			error:function(x,msg,obj){
+				alert(msg);
+			}
+		})
+		return false;
+	}
+	
+	function findEmployeeByEId(eId){
+		var tr = $("#eMsg");
+		$.ajax({
+			url:"${pageContext.request.contextPath}/manager/findEmployeeByEId",
+			type:"post",
+			dataType:"json",
+			data:{eId:eId},
+			success:function(data){
+				$("#eid").html(data.eId);
+				$("#ename").html(data.eName);
+				$("#esa").html(data.ePosition.pBaseSalary);
+				$("#epost").html(data.eDepartment.dName);
+				$("#edept").html(data.ePosition.pName);
+				$("#rname").html(data.eRealName);
+				$("#esex").html(data.eSex);
+				$("#eage").html(data.eAge);
+				tr.show();
+			},
+			error:function(x,msg,obj){
+				alert(msg);
+			}
+		})
+		return false;
+	}
+	
 	function deleteD() {
 		$("#position").hide();
+		$("#employee").hide();
+		$("#eMsg").hide();
+	}
+	
+	function deleteP() {
 		$("#employee").hide();
 		$("#eMsg").hide();
 	}
@@ -289,8 +338,8 @@
 					<tr id="d${dept.dId}">
 						<td>${dept.dId}</td>
 						<td>${dept.dName}</td>
-						<td><a href="javaScript:findPositionByDId(${dept.dId})">查看职位</a></td>
-						<td><a href="javaScript:findEmployeeByDId(${dept.dId})">查看员工</a></td>
+						<td><a href="javaScript:findPositionByDId(${dept.dId})" onclick="deleteD()">查看职位</a></td>
+						<td><a href="javaScript:findEmployeeByDId(${dept.dId})" onclick="deleteD()">查看员工</a></td>
 						<td><a href="${pageContext.request.contextPath}/manager/toUpdateDepartment?dId=${dept.dId}">修改部门</a></td>
 						<td><a href="javaScript:deleteDepartment(${dept.dId})" onclick="deleteD()">删除部门</a></td>
 					</tr>
@@ -299,8 +348,8 @@
 		</c:if>
 		<table id="position">
 			<tr id="ptrFirst">
-				<td>职位id</td>
-				<td>职位name</td>
+				<td>职位ID</td>
+				<td>职位姓名</td>
 				<td>查看员工</td>
 				<td>修改职位</td>
 				<td>删除职位</td>
@@ -315,11 +364,11 @@
 		</table>
 		<table id="employee">
 			<tr id="etrFirst">
-				<td>员工id</td>
-				<td>员工name</td>
-				<td>查看员工详细信息</td>
-				<td>修改员工信息</td>
-				<td>删除员工</td>
+				<td>员工ID</td>
+				<td>员工姓名</td>
+				<td>详细信息</td>
+				<td>修改员工</td>
+				<td>解雇员工</td>
 			</tr>
 			<tr id="etrLast">
 				<td></td>
@@ -342,23 +391,35 @@
 	<div class = "rightDownBiv divBorder">
 		<table id="eMsg">
 			<tr>
-				<td>员工id：</td>
+				<td>员工ID</td>
 				<td id="eid"></td>
 			</tr>
 			<tr>
-				<td>员工name：</td>
+				<td>员工姓名</td>
 				<td id="ename"></td>
 			</tr>
 			<tr>
-				<td>员工基本工资：</td>
+				<td>真实姓名</td>
+				<td id="rname"></td>
+			</tr>
+			<tr>
+				<td>员工性别</td>
+				<td id="esex"></td>
+			</tr>
+			<tr>
+				<td>员工年龄</td>
+				<td id="eage"></td>
+			</tr>
+			<tr>
+				<td>基本工资</td>
 				<td id="esa"></td>
 			</tr>
 			<tr>
-				<td>员工职位：</td>
+				<td>员工职位</td>
 				<td id="epost"></td>
 			</tr>
 			<tr>
-				<td>员工部门：</td>
+				<td>员工部门</td>
 				<td id="edept"></td>
 			</tr>
 		</table>

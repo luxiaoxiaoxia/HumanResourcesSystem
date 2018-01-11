@@ -67,4 +67,49 @@ public class ManagerServiceImpl implements ManagerService{
 		return flag;
 	}
 
+	@Override
+	public Position findPositionByPId(Integer pId) {
+		return positionDao.queryPositionByPId(pId);
+	}
+
+	@Override
+	public boolean updatePosition(Position position) {
+		int res = positionDao.updatePosition(position);
+		boolean flag = false;
+		if(res > 0) {
+			flag = true;
+		}
+		return flag;
+	}
+
+	@Override
+	public boolean deletePosition(Integer pId) {
+		int res = positionDao.deletePosition(pId);
+		boolean flag = false;
+		if(res > 0) {
+			flag = true;
+		}
+		return flag;
+	}
+
+	@Override
+	public Employee findEmployeeByEId(Integer eId) {
+		return employeeDao.queryEmployeeByEId(eId);
+	}
+
+	@Override
+	public List<Position> findAllPosition() {
+		return positionDao.queryAllPosition();
+	}
+	
+	@Override
+	public boolean updateEmployee(Employee employee) {
+		int res = employeeDao.updateEmployee(employee);
+		boolean flag = false;
+		if(res > 0) {
+			flag = true;
+		}
+		return flag;
+	}
+
 }

@@ -7,7 +7,7 @@ public class Position {
 	private Integer pId;
 	private String pName;
 	private Date pCreateTime;
-	private int pType;
+	private int pType;//1.一般员工、2.管理员
 	private Department pDepartment;
 	private double pBaseSalary;
 	

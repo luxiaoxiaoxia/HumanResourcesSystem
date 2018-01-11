@@ -21,5 +21,17 @@ public interface ManagerService {
 	public boolean updateDepartment(Department department);
 	
 	public boolean deleteDepartment(Integer dId);
+	
+	public Position findPositionByPId(Integer pId);
+	
+	public boolean updatePosition(Position position);
+	
+	public boolean deletePosition(Integer pId);
+	
+	public Employee findEmployeeByEId(Integer eId);
+	
+	public List<Position> findAllPosition();
+	
+	public boolean updateEmployee(Employee employee);
 
 }
