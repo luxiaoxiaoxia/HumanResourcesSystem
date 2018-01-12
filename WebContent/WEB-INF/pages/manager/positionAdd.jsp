@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=utf8"
     pageEncoding="utf8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf8">
-<title>departmentUpdate</title>
+<title>positionUpdate</title>
 <style>
 	/*
 		界面背景设置
@@ -75,19 +77,36 @@
 	
 	<div class = "main">
 		<p type=center>
-			<strong>部门修改界面</strong>
+			<strong>部门添加界面</strong>
 		</p>
-		<form action="${pageContext.request.contextPath}/manager/updateDepartment" method="get">
+		<form action="${pageContext.request.contextPath}/manager/addPosition" method="get">
 			<table>
 				<tr>
-					<td>部门name：</td>
-					<td><input type="hidden" name="dId" value="${requestScope.department.dId }">
-					<input type="text" name="dName" value="${requestScope.department.dName }"></td>
+					<td>职位name：</td>
+					<td>
+						<input type="text" name="pName" value="" required="required">
+						<input type="hidden" name="dId" value="${requestScope.department.dId }">
+					</td>
+				</tr>
+				<tr>
+					<td>职位type：</td>
+					<td>
+						<select name="pType">
+							<option value="1">员工</option>
+							<option value="2">主管</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>职位工资：</td>
+					<td>
+						<input type="number" name="pBaseSalary" required="required">
+					</td>
 				</tr>
 				<tr>
 					<td></td>
 					<td><input type="submit" value="提交">
-					<input type="button" value="取消" onclick="window.location.href='${pageContext.request.contextPath}/pages/manager/managerIndex.jsp'"></td>
+					<input type="button" value="取消" onclick="javascrtpt:window.location.href='${pageContext.request.contextPath}/manager/managerIndex.jsp"></td>
 				</tr>
 			</table>
 		</form>

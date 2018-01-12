@@ -33,5 +33,11 @@ public interface ManagerService {
 	public List<Position> findAllPosition();
 	
 	public boolean updateEmployee(Employee employee);
+	
+	public boolean deleteEmployee(Integer eId);
+	
+	public boolean addDepartment(Department department);
+	
+	public boolean addPosition(Position position);
 
 }

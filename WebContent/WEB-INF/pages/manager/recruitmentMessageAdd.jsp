@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=utf8"
     pageEncoding="utf8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf8">
-<title>departmentUpdate</title>
+<title>recruitmentMessageAdd</title>
 <style>
 	/*
 		界面背景设置
@@ -75,19 +76,38 @@
 	
 	<div class = "main">
 		<p type=center>
-			<strong>部门修改界面</strong>
+			<strong>发布招聘信息界面</strong>
 		</p>
-		<form action="${pageContext.request.contextPath}/manager/updateDepartment" method="get">
+		<form action="${pageContext.request.contextPath}/manager/addRecruitmentMessage" method="get">
 			<table>
 				<tr>
-					<td>部门name：</td>
-					<td><input type="hidden" name="dId" value="${requestScope.department.dId }">
-					<input type="text" name="dName" value="${requestScope.department.dName }"></td>
+					<td>部门</td>
+					<td>
+						<select name="rmDId">
+							<c:forEach items="${requestScope.dList }" var="dept">
+								<option value="${dept.dId }">${dept.dName }</option>
+							</c:forEach>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>职位</td>
+					<td>
+						<select name="rmPId">
+							<c:forEach items="${requestScope.pList }" var="posit">
+								<option value="${posit.pId }">${posit.pName }</option>
+							</c:forEach>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>招聘信息</td>
+					<td><input type="text" name="rmMessage" width="80px" height="100px"></td>
 				</tr>
 				<tr>
 					<td></td>
 					<td><input type="submit" value="提交">
-					<input type="button" value="取消" onclick="window.location.href='${pageContext.request.contextPath}/pages/manager/managerIndex.jsp'"></td>
+					<input type="button" value="取消" src="${pageContext.request.contextPath}/manager/managerIndex.jsp"></td>
 				</tr>
 			</table>
 		</form>

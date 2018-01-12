@@ -1,6 +1,7 @@
 package com.ssm.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -147,10 +148,16 @@ public class ManagerController {
 	}
 	
 	@RequestMapping("/updateEmployee")
-	public String updateEmployee(Model model,Employee employee,Integer dId,Integer pId) {
+	public String updateEmployee(Model model,Employee employee,Integer eDId,Integer ePId) {
+		System.out.println(eDId);
+		System.out.println(ePId);
 		Employee e = managerService.findEmployeeByEId(employee.geteId());
-		Department department = managerService.findDepartmentByDId(dId);
-		Position position = managerService.findPositionByPId(pId);
+		Department department = managerService.findDepartmentByDId(eDId);
+		Position position = managerService.findPositionByPId(ePId);
+		System.out.println(employee);
+		System.out.println(e);
+		System.out.println(department);
+		System.out.println(position);
 		List<Position> pList = managerService.findAllPosition();
 		List<Department> dList = managerService.findAllDepartment();
 		employee.seteEntryDate(e.geteEntryDate());
@@ -166,6 +173,57 @@ public class ManagerController {
 		model.addAttribute("pList", pList);
 		model.addAttribute("dList", dList);
 		return "manager/employeeUpdate";
+	}
+	
+	@RequestMapping(value="deleteEmployee",produces="application/json;charset=utf-8")
+	@ResponseBody
+	public String deleteEmployee(Integer eId) {
+		boolean flag = managerService.deleteEmployee(eId);
+		String data = "0";
+		if(flag) {
+			data = "1";
+		}
+		return data;
+	}
+	
+	@RequestMapping("/toAddRecruitmentMessage")
+	public String toAddRecruitmentMessage(Model model) {
+		List<Position> pList = managerService.findAllPosition();
+		List<Department> dList = managerService.findAllDepartment();
+		model.addAttribute("pList", pList);
+		model.addAttribute("dList", dList);
+		return "manager/recruitmentMessageAdd";
+	}
+	
+	@RequestMapping(value="addDepartment",produces="application/json;charset=utf-8")
+	@ResponseBody
+	public String addDepartment(String dName) {
+		Department department = new Department(-1, dName, new Date(), 1);
+		boolean flag = managerService.addDepartment(department);
+		String data = "0";
+		if(flag) {
+			data = "1";
+		}
+		return data;
+	}
+	
+	@RequestMapping("/toAddPosition")
+	public String toAddPosition(Model model,Integer dId) {
+		Department department = managerService.findDepartmentByDId(dId);
+		model.addAttribute("department", department);
+		return "manager/positionAdd";
+	}
+	
+	@RequestMapping("/addPosition")
+	public String addPosition(Model model,String pName,Integer dId,Integer pType,Integer pBaseSalary) {
+		Department department = managerService.findDepartmentByDId(dId);
+		Position position = new Position(-1, pName, new Date(), pType, department, pBaseSalary);
+		boolean flag = managerService.addPosition(position);
+		if(flag) {
+			return "manager/managerIndex";
+		}
+		model.addAttribute("department", department);
+		return "manager/positionAdd";
 	}
 
 }

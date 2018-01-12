@@ -97,12 +97,12 @@
 					<td>员工性别</td>
 					<td>
 						<c:if test="${requestScope.employee.eSex eq '男' }">
-							<input type="radio" name="eSex" value="男" checked="checked">
-							<input type="radio" name="eSex" value="女">
+							<input type="radio" name="eSex" value="男" checked="checked">男
+							<input type="radio" name="eSex" value="女">女
 						</c:if>
 						<c:if test="${requestScope.employee.eSex eq '女' }">
-							<input type="radio" name="eSex" value="男">
-							<input type="radio" name="eSex" value="女" checked="checked">
+							<input type="radio" name="eSex" value="男">男
+							<input type="radio" name="eSex" value="女" checked="checked">女
 						</c:if>
 					</td>
 					<td>员工年龄</td>

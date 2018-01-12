@@ -112,4 +112,34 @@ public class ManagerServiceImpl implements ManagerService{
 		return flag;
 	}
 
+	@Override
+	public boolean deleteEmployee(Integer eId) {
+		int res = employeeDao.deleteEmployee(eId);
+		boolean flag = false;
+		if(res > 0) {
+			flag = true;
+		}
+		return flag;
+	}
+
+	@Override
+	public boolean addDepartment(Department department) {
+		int res = departmentDao.insertDepartment(department);
+		boolean flag = false;
+		if(res > 0) {
+			flag = true;
+		}
+		return flag;
+	}
+
+	@Override
+	public boolean addPosition(Position position) {
+		int res = positionDao.insertPosition(position);
+		boolean flag = false;
+		if(res > 0) {
+			flag = true;
+		}
+		return flag;
+	}
+
 }

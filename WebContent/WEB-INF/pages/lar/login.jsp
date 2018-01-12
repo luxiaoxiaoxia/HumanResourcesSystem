@@ -67,6 +67,8 @@
 			var name = $("input[name='name']").val();
 			var password = $("input[name='password']").val();
 			var submit = $("input[type='submit']");
+			//alert(name);
+			//alert(password);
 			$.ajax({
 				url:"${pageContext.request.contextPath}/index/checkLoginNameAndPassword",
 				type:"get",

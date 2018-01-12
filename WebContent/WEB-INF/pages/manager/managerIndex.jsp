@@ -280,6 +280,48 @@
 		return false;
 	}
 	
+	function deleteEmployee(eId){
+		var tr = $("#"+"e"+eId);
+		$.ajax({
+			url:"${pageContext.request.contextPath}/manager/deleteEmployee",
+			type:"post",
+			dataType:"json",
+			data:{eId:eId},
+			success:function(data){
+				//alert(data);
+				if(data == 1){
+					tr.remove();
+				}else{
+					alert("该员工暂时无法删除");
+				}
+			},
+			error:function(x,msg,obj){
+				alert(msg);
+			}
+		})
+		return false;
+	}
+	
+	function addDepartment(){
+		var dName = prompt("请输入部门名");
+		if(dName != null && dName != ""){
+			$.ajax({
+				url:"${pageContext.request.contextPath}/manager/addDepartment",
+				type:"post",
+				dataType:"json",
+				data:{dName:dName},
+				success:function(data){
+					alert("添加成功");
+				},
+				error:function(x,msg,obj){
+					alert(msg);
+				}
+			})
+		}
+		//$('#fad').trigger("click");
+		return false;
+	}
+	
 	function deleteD() {
 		$("#position").hide();
 		$("#employee").hide();
@@ -303,13 +345,13 @@
 	<!--导向-->
 	<div class = "leftBiv divBorder">
 			
-		<p class="pLeft" onmouseover="this.style.background='lightblue'" onmouseout="this.style.background=''"><a href="${pageContext.request.contextPath}/manager/findAllDepartment" style="color:black;text-decoration:none;">查看公司</a></p>
+		<p class="pLeft" onmouseover="this.style.background='lightblue'" onmouseout="this.style.background=''"><a href="${pageContext.request.contextPath}/manager/findAllDepartment" style="color:black;text-decoration:none;" id="fad">查看公司</a></p>
 				
 		<p class="pLeft" onmouseover="this.style.background='lightblue'" onmouseout="this.style.background=''"><a href="" style="color:black;text-decoration:none;">查看考勤</a></p>
 		
 		<p class="pLeft" onmouseover="this.style.background='lightblue'" onmouseout="this.style.background=''"><a href="" style="color:black;text-decoration:none;">工资结算</a></p>
 		
-		<p class="pLeft" onmouseover="this.style.background='lightblue'" onmouseout="this.style.background=''"><a href="" style="color:black;text-decoration:none;">发布招聘信息</a></p>
+		<p class="pLeft" onmouseover="this.style.background='lightblue'" onmouseout="this.style.background=''"><a href="${pageContext.request.contextPath}/manager/toAddRecruitmentMessage" style="color:black;text-decoration:none;">发布招聘信息</a></p>
 		
 		<p class="pLeft" onmouseover="this.style.background='lightblue'" onmouseout="this.style.background=''"><a href="" style="color:black;text-decoration:none;">查看招聘信息</a></p>
 				
@@ -333,6 +375,7 @@
 					<td>查看员工</td>
 					<td>修改部门</td>
 					<td>删除部门</td>
+					<td>添加职位</td>
 				</tr>
 				<c:forEach items="${requestScope.dList }" var="dept">
 					<tr id="d${dept.dId}">
@@ -342,8 +385,17 @@
 						<td><a href="javaScript:findEmployeeByDId(${dept.dId})" onclick="deleteD()">查看员工</a></td>
 						<td><a href="${pageContext.request.contextPath}/manager/toUpdateDepartment?dId=${dept.dId}">修改部门</a></td>
 						<td><a href="javaScript:deleteDepartment(${dept.dId})" onclick="deleteD()">删除部门</a></td>
+						<td><a href="${pageContext.request.contextPath}/manager/toAddPosition?dId=${dept.dId}">添加职位</a></td>
 					</tr>
 				</c:forEach>
+				<tr id="dLastTr">
+					<td><a href="javaScript:addDepartment()" onclick="deleteD()">添加部门</a></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
 			</table>
 		</c:if>
 		<table id="position">
