@@ -120,6 +120,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.7.2.js"></script>
 <script type="text/javascript">
 	$(function() {
+		$("#recruitmentMessage").hide();
 		$("#position").hide();
 		$("#employee").hide();
 		$("#eMsg").hide();
@@ -322,6 +323,28 @@
 		return false;
 	}
 	
+	function findAllRecruitmentMessage(){
+		$.ajax({
+			url:"${pageContext.request.contextPath}/manager/findAllRecruitmentMessage",
+			type:"post",
+			dataType:"json",
+			success:function(data){
+				$("tr[class='rmtr']").remove();
+				$.each(data,function(index,item){
+					$("#rmtrLast").before("<tr class='rmtr' id="+"rm"+item.rmId+"><td>"+item.rmId+"</td><td>"+item.eName+
+							"</td><td>"+"<a href="+"javaScript:findEmployeeByEId("+item.eId+")"+">查看员工</a>"+
+							"</td><td>"+"<a href="+"${pageContext.request.contextPath}/manager/toUpdateEmployee?eId="+item.eId+">修改员工</a>"+"</td><td>"+
+							"<a href="+"javaScript:deleteEmployee("+item.eId+")"+">删除员工</a>"+"</td></tr>");
+				})
+				$("#employee").show();
+			},
+			error:function(x,msg,obj){
+				alert(msg);
+			}
+		})
+		return false;
+	}
+	
 	function deleteD() {
 		$("#position").hide();
 		$("#employee").hide();
@@ -353,7 +376,7 @@
 		
 		<p class="pLeft" onmouseover="this.style.background='lightblue'" onmouseout="this.style.background=''"><a href="${pageContext.request.contextPath}/manager/toAddRecruitmentMessage" style="color:black;text-decoration:none;">发布招聘信息</a></p>
 		
-		<p class="pLeft" onmouseover="this.style.background='lightblue'" onmouseout="this.style.background=''"><a href="" style="color:black;text-decoration:none;">查看招聘信息</a></p>
+		<p class="pLeft" onmouseover="this.style.background='lightblue'" onmouseout="this.style.background=''"><a href="${pageContext.request.contextPath}/manager/findAllRecruitmentMessage" style="color:black;text-decoration:none;">查看招聘信息</a></p>
 				
 		<p class="pLeft" onmouseover="this.style.background='lightblue'" onmouseout="this.style.background=''"><a href="" style="color:black;text-decoration:none;">待处理信息</a></p>
 				
@@ -398,6 +421,7 @@
 				</tr>
 			</table>
 		</c:if>
+		
 		<table id="position">
 			<tr id="ptrFirst">
 				<td>职位ID</td>
@@ -414,6 +438,7 @@
 				<td></td>
 			</tr>
 		</table>
+		
 		<table id="employee">
 			<tr id="etrFirst">
 				<td>员工ID</td>
@@ -423,6 +448,25 @@
 				<td>解雇员工</td>
 			</tr>
 			<tr id="etrLast">
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>
+		
+		<table id="recruitmentMessage">
+			<tr id="rmtrFirst">
+				<td>招聘信息id</td>
+				<td>招聘部门</td>
+				<td>招聘职位</td>
+				<td>招聘信息</td>
+				<td>修改</td>
+				<td>删除</td>
+			</tr>
+			<tr id="rmtrLast">
+				<td></td>
 				<td></td>
 				<td></td>
 				<td></td>

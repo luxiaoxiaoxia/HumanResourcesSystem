@@ -5,6 +5,7 @@ import java.util.List;
 import com.ssm.entity.Department;
 import com.ssm.entity.Employee;
 import com.ssm.entity.Position;
+import com.ssm.entity.RecruitmentMessage;
 
 public interface ManagerService {
 	
@@ -39,5 +40,11 @@ public interface ManagerService {
 	public boolean addDepartment(Department department);
 	
 	public boolean addPosition(Position position);
+	
+	public RecruitmentMessage findRecruitmentMessageByDIdAndPId(Integer dId,Integer pId);
+	
+	public boolean addRecruitmentMessage(RecruitmentMessage recruitmentMessage);
+	
+	public List<RecruitmentMessage> findAllRecruitmentMessage();
 
 }

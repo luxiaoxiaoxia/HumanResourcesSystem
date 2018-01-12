@@ -8,9 +8,11 @@ import org.springframework.stereotype.Service;
 import com.ssm.dao.DepartmentDao;
 import com.ssm.dao.EmployeeDao;
 import com.ssm.dao.PositionDao;
+import com.ssm.dao.RecruitmentMessageDao;
 import com.ssm.entity.Department;
 import com.ssm.entity.Employee;
 import com.ssm.entity.Position;
+import com.ssm.entity.RecruitmentMessage;
 import com.ssm.service.ManagerService;
 @Service("managerService")
 public class ManagerServiceImpl implements ManagerService{
@@ -21,6 +23,8 @@ public class ManagerServiceImpl implements ManagerService{
 	private PositionDao positionDao;
 	@Autowired
 	private EmployeeDao employeeDao;
+	@Autowired
+	private RecruitmentMessageDao recruitmentMessageDao;
 
 	@Override
 	public List<Department> findAllDepartment() {
@@ -140,6 +144,26 @@ public class ManagerServiceImpl implements ManagerService{
 			flag = true;
 		}
 		return flag;
+	}
+
+	@Override
+	public RecruitmentMessage findRecruitmentMessageByDIdAndPId(Integer dId, Integer pId) {
+		return recruitmentMessageDao.queryRecruitmentMessageByRmDIdAndRmPId(dId, pId);
+	}
+
+	@Override
+	public boolean addRecruitmentMessage(RecruitmentMessage recruitmentMessage) {
+		int res = recruitmentMessageDao.insertRecruitmentMessage(recruitmentMessage);
+		boolean flag = false;
+		if(res > 0) {
+			flag = true;
+		}
+		return flag;
+	}
+
+	@Override
+	public List<RecruitmentMessage> findAllRecruitmentMessage() {
+		return recruitmentMessageDao.queryAllRecruitmentMessage();
 	}
 
 }

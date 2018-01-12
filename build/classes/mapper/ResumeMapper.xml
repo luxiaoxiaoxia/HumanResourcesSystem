@@ -30,8 +30,8 @@
 			#{uEducation},
 			#{uPhotoNumber},
 			#{uEmail},
-			#{uDId},
-			#{uPId},
+			#{uDept.dId},
+			#{uPosit.pId},
 			#{uWorkTime},
 			#{uSalary},
 			#{uBeforeJob},
@@ -60,8 +60,8 @@
 			u_education=#{uEducation},
 			u_photo_number=#{uPhotoNumber},
 			u_email=#{uEmail},
-			u_d_id=#{uDId},
-			u_p_id=#{uPId},
+			u_d_id=#{uDept.dId},
+			u_p_id=#{uPosit.pId},
 			u_work_time=#{uWorkTime},
 			u_salary=#{uSalary},
 			u_before_job=#{uBeforeJob},
@@ -97,9 +97,9 @@
 		<result property="uHobby" column="u_hobby"/>
 		<result property="uResumeDate" column="u_resume_date"/>
 		<result property="rType" column="r_type"/>
-		<result property="uDId" column="u_d_id"/>
-		<result property="uPId" column="u_p_id"/>
 		<association property="rUser" column="u_id" select="queryUserByUId"></association>
+		<association property="uDept" column="u_d_id" select="queryDepartmentByDId"></association>
+		<association property="uPosit" column="u_p_id" select="queryPositionByPId"></association>
 	</resultMap>
 	
 	<select id="queryUserByUId" parameterType="int" resultType="User">
@@ -109,6 +109,33 @@
 			users 
 		where
 			u_id = #{uId}
+	</select>
+	
+	<select id="queryPositionByPId" parameterType="int" resultMap="PositionResultMap" >
+		select
+			* 
+		from
+			positions 
+		where
+			p_id = #{pId}
+	</select>
+	
+	<resultMap type="Position" id="PositionResultMap">
+		<id property="pId" column="p_id"/>
+		<result property="pName" column="p_name"/>
+		<result property="pCreateTime" column="p_create_time"/>
+		<result property="pType" column="p_type"/>
+		<result property="pBaseSalary" column="p_base_salary"/>
+		<association property="pDepartment" column="p_d_id" select="queryDepartmentByDId"></association>
+	</resultMap>
+	 
+	<select id="queryDepartmentByDId" parameterType="int" resultType="Department">
+		SELECT 
+			* 
+		FROM 
+			departments 
+		WHERE 
+			d_id=#{dId}
 	</select>
 	
 	<select id="queryResumeByUId" parameterType="int" resultMap="ResumeResultMap">

@@ -2,6 +2,8 @@ package com.ssm.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.ssm.entity.RecruitmentMessage;
 
 public interface RecruitmentMessageDao {
@@ -40,6 +42,14 @@ public interface RecruitmentMessageDao {
 	 * @return 招聘信息集合
 	 */
 	public List<RecruitmentMessage> queryRecruitmentMessageByRmDId(Integer rmDId);
+	
+	/**
+	 * 通过部门id和职位id查询一条招聘信息
+	 * @param rmDId 部门id
+	 * @param rmPId 职位id
+	 * @return RecruitmentMessage 招聘信息
+	 */
+	public RecruitmentMessage queryRecruitmentMessageByRmDIdAndRmPId(@Param("rmDId")Integer rmDId,@Param("rmPId")Integer rmPId);
 	
 	/**
 	 * 通过职位id查询该职位的招聘信息

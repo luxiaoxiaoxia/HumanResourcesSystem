@@ -14,6 +14,7 @@ import com.alibaba.fastjson.JSON;
 import com.ssm.entity.Department;
 import com.ssm.entity.Employee;
 import com.ssm.entity.Position;
+import com.ssm.entity.RecruitmentMessage;
 import com.ssm.service.ManagerService;
 
 @Controller
@@ -188,11 +189,56 @@ public class ManagerController {
 	
 	@RequestMapping("/toAddRecruitmentMessage")
 	public String toAddRecruitmentMessage(Model model) {
-		List<Position> pList = managerService.findAllPosition();
 		List<Department> dList = managerService.findAllDepartment();
-		model.addAttribute("pList", pList);
 		model.addAttribute("dList", dList);
 		return "manager/recruitmentMessageAdd";
+	}
+	
+	@RequestMapping(value="rmFindPositionByRmDId",produces="application/json;charset=utf-8")
+	@ResponseBody
+	public String rmFindPositionByRmDId(Integer rmDId) {
+		System.out.println(rmDId);
+		List<Position> pList = managerService.findPositionByDId(rmDId);
+		String data = JSON.toJSONString(pList);
+		return data;
+	}
+	
+	@RequestMapping(value="checkRMRmDIdAndRmPId",produces="application/json;charset=utf-8")
+	@ResponseBody
+	public String checkRMRmDIdAndRmPId(Integer rmDId,Integer rmPId) {
+		RecruitmentMessage rm = managerService.findRecruitmentMessageByDIdAndPId(rmDId, rmPId);
+		String data = "0";
+		if(rm == null) {
+			data = "1";
+		}
+		return data;
+	}
+	
+	@RequestMapping("/addRecruitmentMessage")
+	public String addRecruitmentMessage(Model model,Integer rmDId,Integer rmPId,String rmMessage) {
+		System.out.println("addRecruitmentMessage");
+		System.out.println(rmDId);
+		System.out.println(rmPId);
+		System.out.println(rmMessage);
+		RecruitmentMessage rm = managerService.findRecruitmentMessageByDIdAndPId(rmDId, rmPId);
+		System.out.println(rm);
+		if(rm == null) {
+			Department dept = managerService.findDepartmentByDId(rmDId);
+			Position posit = managerService.findPositionByPId(rmPId);
+			RecruitmentMessage rmNew = new RecruitmentMessage(-1, dept, posit, rmMessage, new Date(), 1);
+			System.out.println(rmNew);
+			boolean flag = managerService.addRecruitmentMessage(rmNew);
+			System.out.println(flag);
+			if(flag) {
+				return "manager/managerSuccess";
+			}
+		}
+		return "manager/managerDefault";
+	}
+	
+	@RequestMapping("/managerSD")
+	public String managerSD() {
+		return "manager/managerIndex";
 	}
 	
 	@RequestMapping(value="addDepartment",produces="application/json;charset=utf-8")
@@ -224,6 +270,13 @@ public class ManagerController {
 		}
 		model.addAttribute("department", department);
 		return "manager/positionAdd";
+	}
+	
+	@RequestMapping("/findAllRecruitmentMessage")
+	public String findAllRecruitmentMessage(Model model) {
+		List<RecruitmentMessage> rmList = managerService.findAllRecruitmentMessage();
+		model.addAttribute("rmList", rmList);
+		return "manager/managerIndex";
 	}
 
 }

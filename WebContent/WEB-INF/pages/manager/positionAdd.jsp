@@ -106,7 +106,7 @@
 				<tr>
 					<td></td>
 					<td><input type="submit" value="提交">
-					<input type="button" value="取消" onclick="javascrtpt:window.location.href='${pageContext.request.contextPath}/manager/managerIndex.jsp"></td>
+					<input type="button" value="取消" onclick="javascrtpt:window.location.href='${pageContext.request.contextPath}/manager/managerIndex.jsp'"></td>
 				</tr>
 			</table>
 		</form>

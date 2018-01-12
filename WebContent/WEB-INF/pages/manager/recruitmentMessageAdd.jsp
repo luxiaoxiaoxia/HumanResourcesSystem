@@ -63,7 +63,59 @@
 </style>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.7.2.js"></script>
 <script type="text/javascript">
-	
+$(function(){
+	$("input[type='submit']").click(function(){
+		var rmDId = $("select[name='rmDId']").val();
+		var rmPId = $("select[name='rmPId']").val();
+		var submit = $("input[type='submit']");
+		//alert(name);
+		//alert(password);
+		$.ajax({
+			url:"${pageContext.request.contextPath}/manager/checkRMRmDIdAndRmPId",
+			type:"get",
+			dataType:"text",
+			data:{rmDId:rmDId,rmPId:rmPId},
+			success:function(data){
+				if(data == 1){
+					$("form").submit();
+				}else{
+					$("span").html("该招聘信息已存在");
+				}
+			},
+			error:function(x,msg,obj){
+				alert(msg);
+			}
+		})
+		return false;
+	})
+})
+
+$(function(){
+	$("select[name='rmDId']").change(function(){
+		var rmDId = $("select[name='rmDId']").val();
+		$.ajax({
+			url:"${pageContext.request.contextPath}/manager/rmFindPositionByRmDId",
+			type:"get",
+			dataType:"json",
+			data:{rmDId:rmDId},
+			success:function(data){
+				$("select[name='rmPId']").empty();
+				$.each(data,function(index,item){
+					$("select[name='rmPId']").append("<option value="+item.pId+">"+item.pName+"</option>");
+				});
+			},
+			error:function(x,msg,obj){
+				alert(msg);
+			}
+		})
+		return false;
+	})
+})
+
+$(function(){
+	$("select[name='rmDId']").trigger("change");
+})
+
 </script>
 </head>
 <body background="${pageContext.request.contextPath}/img/linkview2.jpg">
@@ -94,9 +146,7 @@
 					<td>职位</td>
 					<td>
 						<select name="rmPId">
-							<c:forEach items="${requestScope.pList }" var="posit">
-								<option value="${posit.pId }">${posit.pName }</option>
-							</c:forEach>
+							
 						</select>
 					</td>
 				</tr>
@@ -106,8 +156,12 @@
 				</tr>
 				<tr>
 					<td></td>
+					<td><span></span></td>
+				</tr>
+				<tr>
+					<td></td>
 					<td><input type="submit" value="提交">
-					<input type="button" value="取消" src="${pageContext.request.contextPath}/manager/managerIndex.jsp"></td>
+					<input type="button" value="取消" onclick="javascrtpt:window.location.href='${pageContext.request.contextPath}/manager/managerIndex.jsp"></td>
 				</tr>
 			</table>
 		</form>
