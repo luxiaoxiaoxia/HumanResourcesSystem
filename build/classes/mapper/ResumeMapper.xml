@@ -147,6 +147,17 @@
 			u_id = #{uId}
 	</select>
 	
+	<select id="queryResumeByUIdAndRType" parameterType="int" resultMap="ResumeResultMap">
+		select
+			*
+		from
+			resumes
+		where
+			u_id = #{uId}
+		and
+			r_type = #{rType}	
+	</select>
+	
 	<select id="queryAllResume" resultMap="ResumeResultMap">
 		select
 			*

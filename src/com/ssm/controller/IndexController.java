@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ssm.entity.Employee;
+import com.ssm.entity.RecruitmentMessage;
 import com.ssm.entity.User;
 import com.ssm.service.EmployeeService;
 import com.ssm.service.ResignEmployeeService;
@@ -48,6 +49,8 @@ public class IndexController {
 		User user1 = userService.findUserByUName(user.getUName());
 		if(flag) {
 			session.setAttribute("user", user1);
+			List<RecruitmentMessage> rmList = userService.findRecruitmentMessageByType(1);
+			session.setAttribute("rmList", rmList);
 			return "user/userIndex";
 		}else {
 			model.addAttribute("registerMsg", "×¢²áÊ§°ÜÇëÖØÐÂ×¢²á");
@@ -71,6 +74,8 @@ public class IndexController {
 			}
 		}else if(user != null && employee == null) {
 			session.setAttribute("user", user);
+			List<RecruitmentMessage> rmList = userService.findRecruitmentMessageByType(1);
+			session.setAttribute("rmList", rmList);
 			return "user/userIndex";
 		}else {
 			model.addAttribute("loginMsg", "µÇÂ¼Ê§°Ü");

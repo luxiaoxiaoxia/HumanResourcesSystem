@@ -2,6 +2,8 @@ package com.ssm.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.ssm.entity.ApplicationMessage;
 
 public interface ApplicationMessageDao {
@@ -53,5 +55,13 @@ public interface ApplicationMessageDao {
 	 * @return 应聘信息集合
 	 */
 	public List<ApplicationMessage> queryApplicationMessageByAmUId(Integer amUId);
+	
+	/**
+	 * 
+	 * @param amRmId
+	 * @param amUId
+	 * @return ApplicationMessage
+	 */
+	public ApplicationMessage queryApplicationMessageByAmRmIdAndAmUId(@Param("amRmId")Integer amRmId,@Param("amUId")Integer amUId);
 
 }

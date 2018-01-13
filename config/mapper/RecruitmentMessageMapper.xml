@@ -121,4 +121,13 @@
 			recruitmentmessages
 	</select>
 	
+	<select id="queryRecruitmentMessageByType" parameterType="int" resultMap="RecruitmentMessageResultMap">
+		select
+			*
+		from
+			recruitmentmessages
+		where
+			rm_type=#{rmType}
+	</select>
+	
 </mapper>

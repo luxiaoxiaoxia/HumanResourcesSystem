@@ -1,5 +1,12 @@
 package com.ssm.service;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
+import com.ssm.entity.ApplicationMessage;
+import com.ssm.entity.RecruitmentMessage;
+import com.ssm.entity.Resume;
 import com.ssm.entity.User;
 
 public interface UserService {
@@ -25,5 +32,19 @@ public interface UserService {
 	 * @return User сн©м
 	 */
 	public User findUserByUNameAndUPassword(String uName,String uPassword);
+	
+	public List<RecruitmentMessage> findRecruitmentMessageByType(Integer rmType);
+	
+	public List<Resume> findResumeByUId(Integer uId);
+	
+	public ApplicationMessage findApplicationMessageByByAmRmIdAndAmUId(Integer amRmId,Integer amUId);
+	
+	public RecruitmentMessage findRecruitmentMessageByRmId(Integer rmId);
+	
+	public Resume findResumeByUIdAndRType(Integer rUId,Integer rType);
+	
+	public boolean addResume(Resume resume);
+	
+	public boolean updateResume(Resume resume);
 
 }

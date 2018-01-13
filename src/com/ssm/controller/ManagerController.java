@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
+import com.ssm.entity.ApplicationMessage;
 import com.ssm.entity.Department;
 import com.ssm.entity.Employee;
 import com.ssm.entity.Position;
@@ -272,11 +273,45 @@ public class ManagerController {
 		return "manager/positionAdd";
 	}
 	
-	@RequestMapping("/findAllRecruitmentMessage")
+	@RequestMapping(value="findAllRecruitmentMessage",produces="application/json;charset=utf-8")
+	@ResponseBody
 	public String findAllRecruitmentMessage(Model model) {
 		List<RecruitmentMessage> rmList = managerService.findAllRecruitmentMessage();
-		model.addAttribute("rmList", rmList);
-		return "manager/managerIndex";
+		System.out.println(rmList);
+		String data = JSON.toJSONString(rmList);
+		return data;
+	}
+	
+	@RequestMapping("/toUpdateRecruitmentMessage")
+	public String toUpdateRecruitmentMessage(Model model,Integer rmId) {
+		RecruitmentMessage rm = managerService.findRecruitmentMessageByRmId(rmId);
+		model.addAttribute("rm", rm);
+		return "manager/recruitmentMessageUpdate";
+	}
+	
+	@RequestMapping("/updateRecruitmentMessage")
+	public String updateRecruitmentMessage(Model model,Integer rmId,String rmMessage) {
+		RecruitmentMessage rm = managerService.findRecruitmentMessageByRmId(rmId);
+		model.addAttribute("rm", rm);
+		rm.setRmMessage(rmMessage);
+		boolean flag = managerService.updateRecruitmentMessage(rm);
+		if(flag) {
+			return "manager/managerSuccess";
+		}
+		return "manager/managerDefault";
+	}
+	
+	@RequestMapping(value="deleteRecruitmentMessage",produces="application/json;charset=utf-8")
+	@ResponseBody
+	public String deleteRecruitmentMessage(Integer rmId) {
+		List<ApplicationMessage> amList = managerService.findApplicationMessageByRmId(rmId);
+		if(amList.size()!=0) {
+			return "0";
+		}else {
+			managerService.deleteRecruitmentMessage(rmId);
+			return "1";
+		}
+		
 	}
 
 }

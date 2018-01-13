@@ -63,5 +63,12 @@ public interface RecruitmentMessageDao {
 	 * @return 招聘信息集合
 	 */
 	public List<RecruitmentMessage> queryAllRecruitmentMessage();
+	
+	/**
+	 * 
+	 * @param rmType
+	 * @return 招聘信息集合
+	 */
+	public List<RecruitmentMessage> queryRecruitmentMessageByType(int rmType);
 
 }

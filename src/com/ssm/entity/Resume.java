@@ -20,7 +20,7 @@ public class Resume {
 	private String uPoliticalStatus;//政治面貌
 	private String uHobby;//兴趣爱好
 	private Date uResumeDate;//简历时间
-	private int rType;//0.未查看;1.已查看;
+	private int rType;//0.未查看;1.已查看;-1.模板
 	
 	public Resume() {
 		super();

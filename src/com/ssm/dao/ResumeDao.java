@@ -2,6 +2,8 @@ package com.ssm.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.ssm.entity.Resume;
 
 public interface ResumeDao {
@@ -41,7 +43,7 @@ public interface ResumeDao {
 	 */
 	public List<Resume> queryResumeByUId(Integer uId);
 	
-	
+	public Resume queryResumeByUIdAndRType(@Param("uId")Integer uId,@Param("rType")Integer rType);
 	
 	/**
 	 * 查询所有的简历

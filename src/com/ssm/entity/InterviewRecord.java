@@ -10,7 +10,7 @@ public class InterviewRecord {
 	private Integer irEId;//面试官
 	private Date interviewTime;//面试时间
 	private ApplicationMessage irAm;//应聘信息
-	private int irType;//面试状态：0.未确认;1.确认面试;2.取消面试;3.面试不通过;4.面试通过;
+	private int irType;//面试状态：0.未确认;1.部长确认面试;2.部长取消面试;3.游客确认面试;4.游客取消面试;5.部长面试不通过;6.部长面试通过;
 	
 	public InterviewRecord() {
 		super();

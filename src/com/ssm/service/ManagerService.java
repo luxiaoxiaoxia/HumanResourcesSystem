@@ -2,6 +2,7 @@ package com.ssm.service;
 
 import java.util.List;
 
+import com.ssm.entity.ApplicationMessage;
 import com.ssm.entity.Department;
 import com.ssm.entity.Employee;
 import com.ssm.entity.Position;
@@ -46,5 +47,15 @@ public interface ManagerService {
 	public boolean addRecruitmentMessage(RecruitmentMessage recruitmentMessage);
 	
 	public List<RecruitmentMessage> findAllRecruitmentMessage();
+	
+	public RecruitmentMessage findRecruitmentMessageByRmId(Integer rmId);
+	
+	public boolean updateRecruitmentMessage(RecruitmentMessage recruitmentMessage);
+	
+	public List<ApplicationMessage> findApplicationMessageByRmId(Integer rmId);
+	
+	public boolean deleteRecruitmentMessage(Integer rmId);
+	
+	
 
 }

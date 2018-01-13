@@ -5,10 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ssm.dao.ApplicationMessageDao;
 import com.ssm.dao.DepartmentDao;
 import com.ssm.dao.EmployeeDao;
 import com.ssm.dao.PositionDao;
 import com.ssm.dao.RecruitmentMessageDao;
+import com.ssm.entity.ApplicationMessage;
 import com.ssm.entity.Department;
 import com.ssm.entity.Employee;
 import com.ssm.entity.Position;
@@ -25,6 +27,8 @@ public class ManagerServiceImpl implements ManagerService{
 	private EmployeeDao employeeDao;
 	@Autowired
 	private RecruitmentMessageDao recruitmentMessageDao;
+	@Autowired
+	private ApplicationMessageDao applicationMessageDao;
 
 	@Override
 	public List<Department> findAllDepartment() {
@@ -165,5 +169,37 @@ public class ManagerServiceImpl implements ManagerService{
 	public List<RecruitmentMessage> findAllRecruitmentMessage() {
 		return recruitmentMessageDao.queryAllRecruitmentMessage();
 	}
+
+	@Override
+	public RecruitmentMessage findRecruitmentMessageByRmId(Integer rmId) {
+		return recruitmentMessageDao.queryRecruitmentMessageByRmId(rmId);
+	}
+
+	@Override
+	public boolean updateRecruitmentMessage(RecruitmentMessage recruitmentMessage) {
+		int res = recruitmentMessageDao.updateRecruitmentMessage(recruitmentMessage);
+		boolean flag = false;
+		if(res > 0) {
+			flag = true;
+		}
+		return flag;
+	}
+
+	@Override
+	public List<ApplicationMessage> findApplicationMessageByRmId(Integer rmId) {
+		return applicationMessageDao.queryApplicationMessageByAmRmId(rmId);
+	}
+
+	@Override
+	public boolean deleteRecruitmentMessage(Integer rmId) {
+		int res = recruitmentMessageDao.deleteRecruitmentMessage(rmId);
+		boolean flag = false;
+		if(res > 0) {
+			flag = true;
+		}
+		return flag;
+	}
+
+	
 
 }

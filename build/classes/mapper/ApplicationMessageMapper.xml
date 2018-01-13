@@ -166,4 +166,15 @@
 			am_u_id = #{amUId}
 	</select>
 	
+	<select id="queryApplicationMessageByAmRmIdAndAmUId" parameterType="int" resultMap="ApplicationMessageResultMap">
+		select
+			*
+		from
+			applicationmessages
+		where
+			am_u_id = #{amUId}
+		and
+			am_rm_id = #{amRmId}	
+	</select>
+	
 </mapper>
